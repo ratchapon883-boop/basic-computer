@@ -3,45 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ตะลุยด่านคอมพิวเตอร์ ช่วย ROBO กลับบ้าน</title>
+<title>ตะลุยด่านคอมพิวเตอร์ ช่วย ROBO กลับบ้าน - ไฟล์อัปขึ้นเว็บได้</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;font-family:'Kanit',sans-serif}
 body{margin:0;background:#f3efff;color:#0A2540}
-header{background:linear-gradient(135deg,#7b2ff7,#2f6bff 55%,#ff4da6);color:#fff;padding:22px 16px 28px;border-radius:0 0 28px 28px;text-align:center;position:relative}
+header{background:linear-gradient(135deg,#7b2ff7,#2f6bff 55%,#ff4da6);color:#fff;padding:22px 16px 28px;border-radius:0 0 28px 28px;text-align:center}
 header h1{margin:6px 0 4px;font-size:30px;line-height:1.2}
-header p{margin:4px 0;opacity:.95}
-.topbar{display:flex;justify-content:space-between;align-items:center;max-width:1080px;margin:0 auto}
-.pill{background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;border-radius:999px;font-weight:600;border:1px solid rgba(255,255,255,.4)}
+.topbar{display:flex;justify-content:space-between;align-items:center;max-width:1080px;margin:0 auto;flex-wrap:wrap;gap:8px}
+.pill{background:rgba(255,255,255,.22);color:#fff;padding:6px 12px;border-radius:999px;font-weight:600;border:1px solid rgba(255,255,255,.4);cursor:pointer}
 .wrap{max-width:1080px;margin:0 auto;padding:16px}
 .card{background:#fff;color:#0A2540;border-radius:20px;padding:18px;box-shadow:0 8px 24px rgba(80,40,160,.12);margin-bottom:16px}
-.card h2,.card h3{color:#0A2540;margin:6px 0 10px}
 label{font-weight:700;color:#0A2540}
 input,select{width:100%;padding:12px;border:2px solid #d8d6ff;border-radius:12px;font-size:16px;color:#0A2540;background:#fff}
 input::placeholder{color:#3A4A7A}
-.grid{display:grid;gap:12px}
-.g2{grid-template-columns:1fr 1fr}
-.g3{grid-template-columns:1fr 1fr 1fr}
-.g4{grid-template-columns:1fr 1fr 1fr 1fr}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:1fr 1fr 1fr 1fr}
 @media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr 1fr} header h1{font-size:24px}}
 .choice{border:2px solid #e6e2ff;border-radius:14px;padding:12px;text-align:center;cursor:pointer;background:#fff;color:#0A2540;font-weight:600}
 .choice.sel{border-color:#7b2ff7;background:#f0e8ff;box-shadow:0 0 0 3px #d8c8ff}
-.choice.locked{opacity:.55;cursor:not-allowed}
-.btn{border:none;border-radius:999px;padding:13px 20px;font-weight:800;cursor:pointer;font-size:16px;color:#0A2540;background:#fff;border:2px solid #0A2540}
+.btn{border:2px solid #0A2540;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;font-size:15px;color:#0A2540;background:#fff}
 .btn-primary{background:linear-gradient(90deg,#7b2ff7,#ff4da6);color:#fff;border:none}
 .btn-navy{background:#0A2540;color:#fff;border:none}
 .btn-green{background:#16a34a;color:#fff;border:none}
-.btn-ghost{background:#fff;color:#0A2540}
-.zone{cursor:pointer}
-.zone.locked{opacity:.65}
 .badge{display:inline-block;background:#fff2cc;color:#0A2540;border:1px solid #f0c040;padding:4px 10px;border-radius:999px;font-weight:700}
-.xpbar{height:14px;background:#eee;border-radius:999px;overflow:hidden}
+.xpbar{height:14px;background:rgba(255,255,255,.3);border-radius:999px;overflow:hidden;max-width:700px;margin:0 auto}
 .xpbar div{height:100%;background:linear-gradient(90deg,#7b2ff7,#ff4da6);transition:width .6s}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.tab{flex:1;min-width:140px;background:#fff;color:#0A2540;border:2px solid #d8d6ff;border-radius:999px;padding:11px;text-align:center;cursor:pointer;font-weight:800}
+.tab{flex:1;min-width:130px;background:#fff;color:#0A2540;border:2px solid #d8d6ff;border-radius:999px;padding:11px;text-align:center;cursor:pointer;font-weight:800}
 .tab.active{background:#0A2540;color:#fff;border-color:#0A2540}
 .tab.locked{opacity:.55;cursor:not-allowed}
-.stepper{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.stepper{display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px 0}
 .stepdot{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;background:#e8e8f0;color:#0A2540;border:2px solid #cbd0e0}
 .stepdot.done{background:#16a34a;color:#fff;border-color:#16a34a}
 .stepdot.now{background:#0A2540;color:#fff;animation:pulse 1s infinite}
@@ -49,288 +40,185 @@ input::placeholder{color:#3A4A7A}
 .qcard{border:2px solid #e6e2ff;border-radius:16px;padding:14px;margin:10px 0;background:#fff;color:#0A2540}
 .opt{border:2px solid #e6e2ff;border-radius:12px;padding:11px;margin:7px 0;cursor:pointer;background:#fff;color:#0A2540;font-weight:600}
 .opt:hover{border-color:#7b2ff7}
-.opt.correct{background:#dcfce7;border-color:#16a34a;color:#0A2540}
-.opt.wrong{background:#fee2e2;border-color:#ef4444;color:#0A2540;animation:shake .4s}
+.opt.correct{background:#dcfce7;border-color:#16a34a}
+.opt.wrong{background:#fee2e2;border-color:#ef4444;animation:shake .4s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.bounce{animation:bounce .6s}
 .memory{width:100%;aspect-ratio:1;border-radius:14px;border:2px solid #d8d6ff;background:#f0e8ff;color:#0A2540;font-size:26px;cursor:pointer;font-weight:800}
-.memory.open{background:#fff}
-.memory.matched{background:#dcfce7;border-color:#16a34a}
+.memory.open{background:#fff}.memory.matched{background:#dcfce7;border-color:#16a34a}
 .filebtn{padding:10px;border-radius:12px;border:2px solid #d8d6ff;background:#fff;color:#0A2540;cursor:pointer;font-weight:700}
 .filebtn.sel{border-color:#7b2ff7;background:#f0e8ff}
 .folder{padding:16px;border-radius:16px;border:2px dashed #7b2ff7;background:#fff;color:#0A2540;text-align:center;cursor:pointer;font-weight:800}
-.folder.sel{border-style:solid;background:#e0e7ff}
 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;max-width:380px;margin:10px auto}
 .cell{aspect-ratio:1;border-radius:10px;background:#fff;border:2px solid #d8d6ff;display:flex;align-items:center;justify-content:center;font-size:22px;color:#0A2540}
-.cell.wall{background:#0A2540;color:#fff}
-.cell.home{background:#dcfce7}
+.cell.wall{background:#0A2540;color:#fff}.cell.home{background:#dcfce7}
 .modal{position:fixed;inset:0;background:rgba(10,37,64,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
-.modal.open{display:flex}
-.modalbox{background:#fff;color:#0A2540;border-radius:20px;padding:20px;max-width:480px;width:100%}
-table{width:100%;border-collapse:collapse;color:#0A2540}
-th,td{border:1px solid #ddd;padding:8px;text-align:left;font-size:14px}
-th{background:#0A2540;color:#fff}
+.modal.open{display:flex}.modalbox{background:#fff;color:#0A2540;border-radius:20px;padding:20px;max-width:900px;width:100%;max-height:90vh;overflow:auto}
+table{width:100%;border-collapse:collapse;color:#0A2540}th,td{border:1px solid #ddd;padding:8px;text-align:left;font-size:14px}th{background:#0A2540;color:#fff}
 .confetti{position:fixed;top:-20px;font-size:24px;z-index:99;pointer-events:none;animation:fall 1.8s linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-.hidden{display:none}
-.small{font-size:14px;color:#0A2540}
+.hidden{display:none}.small{font-size:14px;color:#0A2540}
 .kbox{background:#f8f7ff;border:1px solid #e6e2ff;border-radius:14px;padding:12px;color:#0A2540}
+.tts-box{background:#fff7d6;border:2px solid #f0c040;border-radius:14px;padding:12px;margin-bottom:12px;color:#0A2540}
+.sent-hl{background:#fff7a6;border-radius:8px;padding:4px 6px}
 </style>
 </head>
 <body>
 <header>
 <div class="topbar"><span class="pill">🤖 ROBO</span><div><button class="pill" onclick="toggleSound()" id="soundBtn">🔊 เสียง: เปิด</button> <button class="pill" onclick="openTeacher()">🔒 สำหรับครูเท่านั้น</button></div></div>
 <h1>🤖 ตะลุยด่านคอมพิวเตอร์<br>ช่วย ROBO กลับบ้าน 🏠</h1>
-<p>ROBO หลงทางอยู่ในโลกคอมพิวเตอร์! ทำแบบทดสอบก่อนเรียน → อ่านใบความรู้ → เล่นเกม → ทำใบงาน ครบ 4 โซน ช่วย ROBO กลับบ้านให้ได้</p>
+<p>ทำตามลำดับนะ: 1.แบบทดสอบก่อนเรียน → 2.ใบความรู้ → 3.เกม → 4.ใบงาน ครบ 4 โซน ช่วย ROBO กลับบ้านให้ได้</p>
 <div style="max-width:700px;margin:12px auto;background:rgba(255,255,255,.18);padding:10px;border-radius:999px"><span id="studentLabel" style="font-weight:800">ยังไม่กรอกชื่อนักเรียน</span> • <span id="xpLabel">XP 0</span> • <span id="starLabel">⭐ 0 ดาว</span></div>
-<div class="xpbar" style="max-width:700px;margin:0 auto;background:rgba(255,255,255,.3)"><div id="xpBar" style="width:0%"></div></div>
+<div class="xpbar"><div id="xpBar" style="width:0%"></div></div>
+<p style="font-size:13px;opacity:.9">ไฟล์นี้เปิดได้เลย ไม่ต้องมีเซิร์ฟเวอร์ อัปขึ้นเว็บโรงเรียน / Google Sites / GitHub Pages ได้ทันที</p>
 </header>
-
 <div class="wrap" id="homeView">
-<div class="card"><h2>🧑‍🎓 ข้อมูลนักเรียน</h2><div class="grid g3"><div><label>เลขที่ (1-40)</label><input id="num" type="number" min="1" max="40" placeholder="เช่น 1"></div><div><label>ชื่อ-นามสกุล *</label><input id="name" placeholder="เช่น ด.ญ. มะลิ ใจดี"></div><div><label>ชั้น / ห้อง *</label><select id="room"><option>ป.4/1</option><option>ป.4/2</option><option>ป.5/1</option><option>ป.5/2</option><option>ป.6/1</option><option>ป.6/2</option></select></div></div><br><button class="btn btn-primary" onclick="saveStudent()">✅ เริ่มผจญภัย</button> <span class="small">ข้อมูลจะจำไว้ในเครื่องนี้ เปิดเว็บครั้งต่อไปไม่ต้องกรอกใหม่</span></div>
-
+<div class="card"><h2>🧑‍🎓 ข้อมูลนักเรียน</h2><div class="grid g3"><div><label>เลขที่ (1-40)</label><input id="num" type="number" min="1" max="40" placeholder="เช่น 1"></div><div><label>ชื่อ-นามสกุล *</label><input id="name" placeholder="เช่น ด.ญ. มะลิ ใจดี"></div><div><label>ชั้น / ห้อง *</label><select id="room"><option>ป.4/1</option><option>ป.4/2</option><option>ป.5/1</option><option>ป.5/2</option><option>ป.6/1</option><option>ป.6/2</option></select></div></div><br><button class="btn btn-primary" onclick="saveStudent()">✅ เริ่มผจญภัย</button> <span class="small">ข้อมูลจะจำไว้ในเครื่องนี้</span></div>
 <div class="card"><h2>🎭 เลือกตัวละครของหนู</h2><div class="grid g4" id="chars"></div></div>
 <div class="card"><h2>⚡ เลือกระดับความยาก</h2><div class="grid g3" id="levels"></div><p class="small">สบายๆ: ถูก 1 ข้อ = 10 XP | ท้าทาย: 20 XP | โหด: 30 XP</p></div>
-
-<div class="card"><h2>🗺️ แผนที่ 4 โซนผจญภัย <span class="badge">เรียนตามลำดับ 1 → 2 → 3 → 4</span></h2><p>ลำดับในแต่ละโซน: <b>1.แบบทดสอบก่อนเรียน → 2.ใบความรู้ → 3.เกม → 4.ใบงาน</b> ทำขั้นก่อนหน้าให้เสร็จก่อนถึงจะปลดล็อกขั้นต่อไป</p><div class="grid g2" id="zones"></div><br><button class="btn btn-ghost" onclick="unlockAll()">🔓 ปลดล็อกทุกโซน (สำหรับครู)</button> <button class="btn btn-ghost" onclick="resetAll()">🗑️ เริ่มใหม่ทั้งหมด</button></div>
+<div class="card"><h2>🗺️ แผนที่ 4 โซนผจญภัย</h2><div class="grid g2" id="zones"></div><br><button class="btn" onclick="unlockAll()">🔓 ปลดล็อกทุกโซน (สำหรับครู)</button> <button class="btn" onclick="resetAll()">🗑️ เริ่มใหม่ทั้งหมด</button></div>
 <div class="card"><h2>🏆 เหรียญรางวัลของหนู</h2><div id="badges"></div></div>
 </div>
-
 <div class="wrap hidden" id="zoneView">
-<button class="btn btn-ghost" onclick="showHome()">⬅️ กลับแผนที่</button>
-<div class="card"><h2 id="zoneTitle"></h2><p id="zoneDesc"></p>
-<div class="stepper" id="stepper"></div>
-<div class="tabs" id="tabs"></div>
-<div id="zoneContent"></div>
+<button class="btn" onclick="showHome()">⬅️ กลับแผนที่</button>
+<div class="card"><h2 id="zoneTitle"></h2><p id="zoneDesc"></p><div class="stepper" id="stepper"></div><div class="tabs" id="tabs"></div><div id="zoneContent"></div></div>
 </div>
-</div>
-
-<div class="modal" id="teacherModal"><div class="modalbox"><h2>🔒 สำหรับครู / แอดมินเท่านั้น</h2><p>ใส่รหัสผ่านครูเพื่อดูสรุปคะแนนนักเรียนทั้งหมด</p><label>รหัสผ่านครู</label><input id="teacherPass" type="password" placeholder="รหัสเริ่มต้น: 1234"><p class="small">รหัสเริ่มต้น: 1234 (ครูเปลี่ยนได้ในโหมดครู)</p><p id="teacherErr" style="color:#dc2626;font-weight:700"></p><br><button class="btn btn-navy" onclick="checkTeacher()">เข้าสู่โหมดครู</button> <button class="btn btn-ghost" onclick="closeTeacher()">ยกเลิก</button></div></div>
-
-<div class="modal" id="teacherDash"><div class="modalbox" style="max-width:900px"><h2>📊 สรุปคะแนน - โหมดครู <span class="badge">เข้าสู่ระบบแล้ว</span></h2><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="searchName" placeholder="ค้นหาชื่อนักเรียน..." oninput="renderTeacher()" style="flex:1"><select id="filterRoom" onchange="renderTeacher()" style="width:180px"><option value="">ทุกห้อง</option><option>ป.4/1</option><option>ป.4/2</option><option>ป.5/1</option><option>ป.5/2</option><option>ป.6/1</option><option>ป.6/2</option></select></div><div id="teacherTable" style="overflow:auto;margin-top:10px"></div><br><input id="newPass" placeholder="เปลี่ยนรหัสครูใหม่ (ใส่รหัสใหม่แล้วกดปุ่ม)"><button class="btn btn-navy" onclick="changePass()">เปลี่ยนรหัสผ่านครู</button> <button class="btn btn-ghost" onclick="logoutTeacher()">ออกจากโหมดครู / ล็อก</button></div></div>
-
+<div class="modal" id="teacherModal"><div class="modalbox" style="max-width:480px"><h2>🔒 สำหรับครู / แอดมินเท่านั้น</h2><p>ใส่รหัสผ่านครูเพื่อดูสรุปคะแนนนักเรียนทั้งหมด</p><label>รหัสผ่านครู</label><input id="teacherPass" type="password" placeholder="รหัสเริ่มต้น: 1234"><p class="small">รหัสเริ่มต้น: 1234 (ครูเปลี่ยนได้ในโหมดครู)</p><p id="teacherErr" style="color:#dc2626;font-weight:700"></p><br><button class="btn btn-navy" onclick="checkTeacher()">เข้าสู่โหมดครู</button> <button class="btn" onclick="closeTeacher()">ยกเลิก</button></div></div>
+<div class="modal" id="teacherDash"><div class="modalbox"><h2>📊 สรุปคะแนน - โหมดครู <span class="badge">เข้าสู่ระบบแล้ว</span></h2><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="searchName" placeholder="ค้นหาชื่อนักเรียน..." oninput="renderTeacher()" style="flex:1"><select id="filterRoom" onchange="renderTeacher()" style="width:180px"><option value="">ทุกห้อง</option><option>ป.4/1</option><option>ป.4/2</option><option>ป.5/1</option><option>ป.5/2</option><option>ป.6/1</option><option>ป.6/2</option></select></div><div id="teacherTable" style="overflow:auto;margin-top:10px"></div><br><input id="newPass" placeholder="เปลี่ยนรหัสครูใหม่"><button class="btn btn-navy" onclick="changePass()">เปลี่ยนรหัสผ่านครู</button> <button class="btn" onclick="logoutTeacher()">ออกจากโหมดครู / ล็อก</button></div></div>
 <script>
-let soundOn = true;
-let audioCtx=null;
-function tone(f,t=0.15,type='sine',delay=0){ if(!soundOn) return; try{ audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)(); let o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type=type; o.frequency.value=f; g.gain.value=0.18; o.connect(g); g.connect(audioCtx.destination); let s=audioCtx.currentTime+delay; o.start(s); o.stop(s+t); }catch(e){} }
+let soundOn=true, audioCtx=null;
+function tone(f,t=0.15,type='sine',delay=0){ if(!soundOn) return; try{ audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)(); let o=audioCtx.createOscillator(),g=audioCtx.createGain(); o.type=type; o.frequency.value=f; g.gain.value=0.18; o.connect(g); g.connect(audioCtx.destination); let s=audioCtx.currentTime+delay; o.start(s); o.stop(s+t);}catch(e){} }
 function playCorrect(){ tone(523,.15); tone(659,.15,'sine',.12); tone(784,.25,'sine',.24); }
 function playWrong(){ tone(180,.25,'sawtooth'); }
 function playClick(){ tone(800,.06); }
 function playUnlock(){ tone(523,.12); tone(659,.12,'sine',.1); tone(784,.12,'sine',.2); tone(1046,.3,'sine',.3); }
-function toggleSound(){ soundOn=!soundOn; document.getElementById('soundBtn').textContent = soundOn?'🔊 เสียง: เปิด':'🔇 เสียง: ปิด'; if(soundOn) playClick(); }
+function toggleSound(){ soundOn=!soundOn; document.getElementById('soundBtn').textContent=soundOn?'🔊 เสียง: เปิด':'🔇 เสียง: ปิด'; if(soundOn) playClick(); }
 function confetti(){ const em=['🎉','⭐','✨','🎊','💜']; for(let i=0;i<28;i++){ let s=document.createElement('div'); s.className='confetti'; s.textContent=em[i%em.length]; s.style.left=Math.random()*100+'vw'; s.style.animationDelay=(Math.random()*0.6)+'s'; document.body.appendChild(s); setTimeout(()=>s.remove(),2000); } }
+
+// ===== TTS เสียงนุ่ม ช้า ชัด =====
+let ttsSentences=[], ttsIdx=0, ttsMode='soft', ttsRate=0.78, ttsRunning=false;
+function setTTSMode(mode){ ttsMode=mode; ttsRate = mode==='soft'?0.75:0.85; let r=document.getElementById('ttsRate'); if(r) r.value=ttsRate; let l=document.getElementById('ttsRateLabel'); if(l) l.textContent=ttsRate.toFixed(2)+'x'; document.querySelectorAll('.tts-mode').forEach(b=>b.style.background=''); let btn=document.getElementById('mode-'+mode); if(btn) btn.style.background='#e0e7ff'; playClick(); }
+function getKnowledgeParas(){ let el=document.querySelector('.kbox'); if(!el) return []; let paras=[]; el.querySelectorAll('h3,p').forEach(n=>{ let t=n.innerText.trim(); if(t) paras.push(t); }); return paras; }
+function splitSentences(text){ // แยกเป็นประโยคสั้นๆ เพื่อให้เสียงเว้นจังหวะสมูท
+  let parts=text.split(/\n+/).join(' ').split(/(?<=[.!?])\s+|(?<=[.!?])|(?<=\u0e2f)\s+/).map(s=>s.trim()).filter(s=>s.length>1);
+  // ถ้าประโยคยาวเกิน 60 ตัวอักษร ให้ตัดเป็นท่อนสั้น
+  let out=[]; parts.forEach(p=>{ if(p.length>70){ let chunks=p.match(/.{1,65}(\s|$)/g)||[p]; chunks.forEach(c=>out.push(c.trim())); } else out.push(p); });
+  return out;
+}
+function speakKnowledge(){
+  try{speechSynthesis.cancel();}catch(e){}
+  let paras=getKnowledgeParas(); if(!paras.length){ alert('ยังไม่มีเนื้อหาใบความรู้'); return; }
+  ttsSentences=[]; paras.forEach(p=>{ splitSentences(p).forEach(s=>ttsSentences.push(s)); });
+  ttsIdx=0; ttsRunning=true; updateTTSStatus(); speakNextSentence();
+}
+function speakPara(idx){
+  try{speechSynthesis.cancel();}catch(e){}
+  let paras=getKnowledgeParas(); if(!paras[idx]) return;
+  ttsSentences=splitSentences(paras[idx]); ttsIdx=0; ttsRunning=true; updateTTSStatus(); speakNextSentence();
+}
+function updateTTSStatus(){ let st=document.getElementById('ttsStatus'); if(st) st.textContent = ttsRunning? `กำลังอ่าน... ประโยคที่ ${Math.min(ttsIdx+1,ttsSentences.length)} / ${ttsSentences.length} • โหมด ${ttsMode==='soft'?'เสียงนุ่ม':'เสียงชัด'} • ${ttsRate.toFixed(2)}x` : 'กดปุ่มอ่านให้ฟัง แล้วฟังไปพร้อมกับดูตัวหนังสือได้เลย'; }
+function highlightCurrentSentence(){
+  document.querySelectorAll('.kbox p, .kbox h3').forEach(el=>{ el.classList.remove('sent-hl'); });
+  let els=document.querySelectorAll('.kbox p, .kbox h3');
+  // ไฮไลต์ย่อหน้าที่มีประโยคนี้อยู่โดยประมาณ
+  let approx = Math.floor(ttsIdx / Math.max(1, ttsSentences.length / Math.max(1, els.length)));
+  if(els[approx]){ els[approx].classList.add('sent-hl'); els[approx].scrollIntoView({behavior:'smooth',block:'center'}); }
+}
+function speakNextSentence(){
+  if(!ttsRunning) return;
+  if(ttsIdx>=ttsSentences.length){ ttsRunning=false; updateTTSStatus(); document.getElementById('ttsStatus').textContent='อ่านจบแล้ว เก่งมาก! 🎉'; clearHL(); return; }
+  highlightCurrentSentence(); updateTTSStatus();
+  let text=ttsSentences[ttsIdx];
+  let u=new SpeechSynthesisUtterance(text);
+  u.lang='th-TH'; u.rate=ttsRate; u.pitch=1.0; u.volume=1;
+  try{
+    let voices=speechSynthesis.getVoices();
+    let th=voices.filter(v=>v.lang && v.lang.toLowerCase().startsWith('th'));
+    let pref = th.find(v=>/natural|premium|google/i.test(v.name)) || th.find(v=>/female|หญิง|thai/i.test(v.name)) || th[0];
+    if(pref) u.voice=pref;
+  }catch(e){}
+  u.onend=()=>{ ttsIdx++; // เว้นจังหวะ 0.4 วิระหว่างประโยค 0.8 วิระหว่างย่อหน้า
+    let pause = 400; setTimeout(()=>{ if(ttsRunning) speakNextSentence(); }, pause);
+  };
+  u.onerror=()=>{ ttsIdx++; setTimeout(()=>{ if(ttsRunning) speakNextSentence(); }, 300); };
+  try{ speechSynthesis.speak(u); }catch(e){}
+}
+function pauseTTS(){ try{ if(speechSynthesis.speaking && !speechSynthesis.paused) speechSynthesis.pause(); else speechSynthesis.resume(); }catch(e){} }
+function stopTTS(){ ttsRunning=false; try{speechSynthesis.cancel();}catch(e){} clearHL(); let st=document.getElementById('ttsStatus'); if(st) st.textContent='หยุดอ่านแล้ว'; }
+function clearHL(){ document.querySelectorAll('.kbox p, .kbox h3').forEach(el=>el.classList.remove('sent-hl')); }
+function changeRate(v){ ttsRate=parseFloat(v); let l=document.getElementById('ttsRateLabel'); if(l) l.textContent=ttsRate.toFixed(2)+'x'; if(ttsRunning){ stopTTS(); speakKnowledge(); } }
+if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=()=>{}; }
 
 const CHARS=[{e:'🤖',n:'สุขสันต์'},{e:'🧑‍🚀',n:'นักบินอวกาศ'},{e:'🦸',n:'ซูเปอร์ฮีโร่'},{e:'🐱',n:'แมวไซเบอร์'},{e:'🕵️',n:'นักสืบไซเบอร์'}];
 const LEVELS=[{n:'สบายๆ',d:'10 ข้อ ไม่จับเวลา',xp:10},{n:'ท้าทาย',d:'20 นาที มีจับเวลา',xp:20},{n:'โหด',d:'10 นาที โจทย์ยาก',xp:30}];
-
-let DATA = [
-{id:1,icon:'🌲',title:'โซน 1 ป่าข้อมูล',sub:'รู้จักคอมพิวเตอร์และอุปกรณ์',desc:'เรียนรู้ ฮาร์ดแวร์ ซอฟต์แวร์ อุปกรณ์รับข้อมูล ประมวลผล แสดงผล เก็บข้อมูล',
-knowledge:`<div class="kbox"><h3>🖥️ คอมพิวเตอร์คืออะไร?</h3><p>เครื่องที่ช่วยรับข้อมูล ประมวลผล และแสดงผลให้เรา</p><p><b>รับข้อมูล:</b> เมาส์ 🖱️ คีย์บอร์ด ⌨️ ไมโครโฟน 🎤 สแกนเนอร์<br><b>ประมวลผล:</b> CPU 🧠 สมองของคอม<br><b>แสดงผล:</b> จอ 🖥️ ลำโพง 🔊 เครื่องพิมพ์ 🖨️<br><b>เก็บข้อมูล:</b> แฟลชไดรฟ์ 💾 ฮาร์ดดิสก์<br><b>ซอฟต์แวร์:</b> โปรแกรมที่สั่งให้คอมทำงาน เช่น โปรแกรมพิมพ์งาน วาดรูป</p><p>ตัวอย่าง: เราพิมพ์ด้วยคีย์บอร์ด → CPU คิด → เห็นตัวหนังสือบนจอ</p></div>`,
-pre:[
-{q:'เมาส์คืออุปกรณ์ประเภทใด?',o:['รับข้อมูล','ประมวลผล','แสดงผล','เก็บข้อมูล'],a:0,why:'เมาส์ใช้รับคำสั่งจากเรา'},
-{q:'CPU ทำหน้าที่อะไร?',o:['เก็บเพลง','ประมวลผล เป็นสมองของคอม','พิมพ์งาน','แสดงรูป'],a:1,why:'CPU คือสมอง คิดและสั่งงาน'},
-{q:'ข้อใดคืออุปกรณ์แสดงผล?',o:['เมาส์','คีย์บอร์ด','จอภาพ','แฟลชไดรฟ์'],a:2,why:'จอแสดงผลให้เราเห็น'},
-{q:'แฟลชไดรฟ์ใช้ทำอะไร?',o:['เก็บข้อมูลพกพา','ฟังเพลงอย่างเดียว','พิมพ์งาน','ต่ออินเทอร์เน็ต'],a:0,why:'แฟลชไดรฟ์เก็บไฟล์พกไปไหนก็ได้'},
-{q:'คีย์บอร์ดใช้ทำอะไร?',o:['ดูหนัง','พิมพ์ตัวหนังสือ','เก็บข้อมูล','ฟังเพลง'],a:1,why:'คีย์บอร์ดใช้พิมพ์'},
-{q:'ข้อใดคือซอฟต์แวร์?',o:['เมาส์','จอ','โปรแกรมพิมพ์งาน','ลำโพง'],a:2,why:'ซอฟต์แวร์คือโปรแกรม'},
-{q:'ลำโพงทำหน้าที่อะไร?',o:['รับข้อมูล','แสดงเสียงให้เราได้ยิน','เก็บข้อมูล','ประมวลผล'],a:1,why:'ลำโพงแสดงผลเป็นเสียง'},
-{q:'ถ้าอยากพิมพ์ชื่อตัวเอง ต้องใช้อะไร?',o:['จอ','คีย์บอร์ด','ลำโพง','เครื่องพิมพ์'],a:1,why:'ใช้คีย์บอร์ดพิมพ์'},
-{q:'ฮาร์ดแวร์คืออะไร?',o:['โปรแกรม','อุปกรณ์ที่จับต้องได้','อินเทอร์เน็ต','เพลง'],a:1,why:'ฮาร์ดแวร์คือตัวเครื่องที่จับได้'},
-{q:'เครื่องพิมพ์คืออุปกรณ์แบบใด?',o:['รับข้อมูล','แสดงผล','ประมวลผล','เก็บข้อมูล'],a:1,why:'เครื่องพิมพ์แสดงผลออกมาเป็นกระดาษ'}],
-work:[
-{q:'เมาส์ - หน้าที่คือ?',o:['รับข้อมูล','แสดงผล','เก็บข้อมูล'],a:0},
-{q:'CPU - หน้าที่คือ?',o:['รับข้อมูล','ประมวลผล','แสดงผล'],a:1},
-{q:'จอภาพ - หน้าที่คือ?',o:['เก็บข้อมูล','แสดงผล','รับข้อมูล'],a:1},
-{q:'แฟลชไดรฟ์ - หน้าที่คือ?',o:['เก็บข้อมูล','ประมวลผล','รับข้อมูล'],a:0},
-{q:'คอมพิวเตอร์ที่จับต้องได้เรียกว่าอะไร?',o:['ฮาร์ดแวร์','ซอฟต์แวร์','อินเทอร์เน็ต'],a:0}]},
+let DATA=[
+{id:1,icon:'🌲',title:'โซน 1 ป่าข้อมูล',sub:'รู้จักคอมพิวเตอร์และอุปกรณ์',desc:'ฮาร์ดแวร์ ซอฟต์แวร์ อุปกรณ์รับข้อมูล ประมวลผล แสดงผล เก็บข้อมูล',
+knowledge:`<div class="kbox"><h3>🖥️ คอมพิวเตอร์คืออะไร?</h3><p>เครื่องที่ช่วยรับข้อมูล ประมวลผล และแสดงผลให้เรา</p><p><b>รับข้อมูล:</b> เมาส์ คีย์บอร์ด ไมโครโฟน สแกนเนอร์<br><b>ประมวลผล:</b> CPU สมองของคอม<br><b>แสดงผล:</b> จอ ลำโพง เครื่องพิมพ์<br><b>เก็บข้อมูล:</b> แฟลชไดรฟ์ ฮาร์ดดิสก์<br><b>ซอฟต์แวร์:</b> โปรแกรมที่สั่งให้คอมทำงาน เช่น โปรแกรมพิมพ์งาน วาดรูป</p><p>ตัวอย่าง: เราพิมพ์ด้วยคีย์บอร์ด CPU คิด แล้วเห็นตัวหนังสือบนจอ</p></div>`,
+pre:[{q:'เมาส์คืออุปกรณ์ประเภทใด?',o:['รับข้อมูล','ประมวลผล','แสดงผล','เก็บข้อมูล'],a:0,why:'เมาส์ใช้รับคำสั่งจากเรา'},{q:'CPU ทำหน้าที่อะไร?',o:['เก็บเพลง','ประมวลผล เป็นสมองของคอม','พิมพ์งาน','แสดงรูป'],a:1,why:'CPU คือสมอง คิดและสั่งงาน'},{q:'ข้อใดคืออุปกรณ์แสดงผล?',o:['เมาส์','คีย์บอร์ด','จอภาพ','แฟลชไดรฟ์'],a:2,why:'จอแสดงผลให้เราเห็น'},{q:'แฟลชไดรฟ์ใช้ทำอะไร?',o:['เก็บข้อมูลพกพา','ฟังเพลงอย่างเดียว','พิมพ์งาน','ต่ออินเทอร์เน็ต'],a:0,why:'แฟลชไดรฟ์เก็บไฟล์พกไปไหนก็ได้'},{q:'คีย์บอร์ดใช้ทำอะไร?',o:['ดูหนัง','พิมพ์ตัวหนังสือ','เก็บข้อมูล','ฟังเพลง'],a:1,why:'คีย์บอร์ดใช้พิมพ์'},{q:'ข้อใดคือซอฟต์แวร์?',o:['เมาส์','จอ','โปรแกรมพิมพ์งาน','ลำโพง'],a:2,why:'ซอฟต์แวร์คือโปรแกรม'},{q:'ลำโพงทำหน้าที่อะไร?',o:['รับข้อมูล','แสดงเสียงให้เราได้ยิน','เก็บข้อมูล','ประมวลผล'],a:1,why:'ลำโพงแสดงผลเป็นเสียง'},{q:'ถ้าอยากพิมพ์ชื่อตัวเอง ต้องใช้อะไร?',o:['จอ','คีย์บอร์ด','ลำโพง','เครื่องพิมพ์'],a:1,why:'ใช้คีย์บอร์ดพิมพ์'},{q:'ฮาร์ดแวร์คืออะไร?',o:['โปรแกรม','อุปกรณ์ที่จับต้องได้','อินเทอร์เน็ต','เพลง'],a:1,why:'ฮาร์ดแวร์คือตัวเครื่องที่จับได้'},{q:'เครื่องพิมพ์คืออุปกรณ์แบบใด?',o:['รับข้อมูล','แสดงผล','ประมวลผล','เก็บข้อมูล'],a:1,why:'เครื่องพิมพ์แสดงผลออกมาเป็นกระดาษ'}],
+work:[{q:'เมาส์ - หน้าที่คือ?',o:['รับข้อมูล','แสดงผล','เก็บข้อมูล'],a:0},{q:'CPU - หน้าที่คือ?',o:['รับข้อมูล','ประมวลผล','แสดงผล'],a:1},{q:'จอภาพ - หน้าที่คือ?',o:['เก็บข้อมูล','แสดงผล','รับข้อมูล'],a:1},{q:'แฟลชไดรฟ์ - หน้าที่คือ?',o:['เก็บข้อมูล','ประมวลผล','รับข้อมูล'],a:0},{q:'คอมพิวเตอร์ที่จับต้องได้เรียกว่าอะไร?',o:['ฮาร์ดแวร์','ซอฟต์แวร์','อินเทอร์เน็ต'],a:0}]},
 {id:2,icon:'🏙️',title:'โซน 2 เมืองดิจิทัล',sub:'โปรแกรมพื้นฐานและการใช้งานอย่างฉลาด',desc:'โปรแกรมพื้นฐาน การพิมพ์ การค้นหาข้อมูลอย่างฉลาด',
-knowledge:`<div class="kbox"><h3>💻 โปรแกรมพื้นฐาน</h3><p>โปรแกรมพิมพ์งาน ใช้พิมพ์รายงาน • โปรแกรมวาดรูป ใช้วาด • โปรแกรมนําเสนอ ใช้เล่าเรื่องหน้าชั้น<br>การใช้เมาส์ คีย์บอร์ด: นั่งหลังตรง ตาอยู่ห่างจอ 1 ไม้บรรทัด พักสายตาทุก 20 นาที<br>การค้นหาข้อมูล: ใช้คำค้นสั้น ชัดเจน เช่น อยากรู้ช้างกินอะไร ค้นว่า <b>ช้างกินอะไร</b> ไม่ใช่พิมพ์ยาวๆ<br>มารยาท: ใช้คอมร่วมกัน ไม่แย่ง ไม่เปิดของเพื่อนโดยไม่ขอ</p></div>`,
-pre:[
-{q:'โปรแกรมใดใช้พิมพ์งาน?',o:['โปรแกรมวาดรูป','โปรแกรมพิมพ์งาน','โปรแกรมฟังเพลง','โปรแกรมเกม'],a:1,why:'โปรแกรมพิมพ์งานใช้พิมพ์'},
-{q:'การนั่งหน้าคอมที่ถูกวิธีคือ?',o:['นั่งหลังตรง ตาห่างจอ','นอนเล่น','นั่งชิดจอมาก','นั่งเอียง'],a:0,why:'หลังตรง ตาห่างจอ ช่วยไม่ปวด'},
-{q:'อยากรู้ว่าช้างกินอะไร ควรค้นว่าอะไร?',o:['ช้างกินอะไร','วันนี้วันอะไรเอ่ยช่วยบอกหน่อย','สวัสดี','ช้าง'],a:0,why:'คำค้นสั้น ชัดเจน หาเจอเร็ว'},
-{q:'ใช้คอมของเพื่อนต้องทำอย่างไร?',o:['เปิดเลย','ขออนุญาตก่อน','ลบไฟล์เพื่อน','เปลี่ยนรหัสเพื่อน'],a:1,why:'ต้องขออนุญาต'},
-{q:'โปรแกรมนำเสนอใช้ทำอะไร?',o:['เล่นเกม','เล่าเรื่องหน้าชั้น','ฟังเพลง','วาดรูปอย่างเดียว'],a:1,why:'ใช้นำเสนอ'},
-{q:'ควรพักสายตาทุกกี่นาที?',o:['5 ชั่วโมง','20 นาที','ไม่ต้องพัก','1 วัน'],a:1,why:'พักทุก 20 นาที'},
-{q:'แป้นพิมพ์ใช้ทำอะไร?',o:['พิมพ์ตัวหนังสือ','ฟังเพลง','เก็บไฟล์','ต่อเน็ต'],a:0,why:'พิมพ์'},
-{q:'ถ้าเจอข้อมูลไม่แน่ใจ ควรทำอย่างไร?',o:['เชื่อเลย','ถามครู / เช็กหลายเว็บ','แชร์ต่อเลย','ลบ'],a:1,why:'เช็กหลายแหล่ง'},
-{q:'โปรแกรมวาดรูปใช้ทำอะไร?',o:['พิมพ์รายงาน','วาดภาพ','ฟังเพลง','ค้นหา'],a:1,why:'วาดภาพ'},
-{q:'ข้อใดคือมารยาทที่ดี?',o:['แย่งคอมเพื่อน','ใช้คอมแล้วปิดให้เรียบร้อย','เปิดเสียงดัง','กินขนมใส่คีย์บอร์ด'],a:1,why:'ใช้แล้วปิดเรียบร้อย'}],
-work:[
-{q:'โปรแกรมพิมพ์งานใช้ทำอะไร?',o:['พิมพ์รายงาน','เล่นเกม','ฟังเพลง'],a:0},
-{q:'คำค้นที่ดีควรเป็นอย่างไร?',o:['สั้น ชัดเจน','ยาวมาก','พิมพ์มั่ว'],a:0},
-{q:'ใช้คอมเสร็จควรทำอย่างไร?',o:['ปิดให้เรียบร้อย','เปิดทิ้งไว้','ถอดปลั๊กแรงๆ'],a:0},
-{q:'นั่งหน้าคอมควรนั่งอย่างไร?',o:['หลังตรง','นอน','นั่งชิดจอ'],a:0},
-{q:'เจอข้อมูลไม่แน่ใจควรทำอย่างไร?',o:['ถามครู','แชร์ต่อเลย','เชื่อเลย'],a:0}]},
+knowledge:`<div class="kbox"><h3>💻 โปรแกรมพื้นฐาน</h3><p>โปรแกรมพิมพ์งาน ใช้พิมพ์รายงาน โปรแกรมวาดรูป ใช้วาด โปรแกรมนําเสนอ ใช้เล่าเรื่องหน้าชั้น</p><p>การใช้เมาส์ คีย์บอร์ด: นั่งหลังตรง ตาอยู่ห่างจอ 1 ไม้บรรทัด พักสายตาทุก 20 นาที</p><p>การค้นหาข้อมูล: ใช้คำค้นสั้น ชัดเจน เช่น อยากรู้ช้างกินอะไร ค้นว่า <b>ช้างกินอะไร</b></p><p>มารยาท: ใช้คอมร่วมกัน ไม่แย่ง ไม่เปิดของเพื่อนโดยไม่ขอ</p></div>`,
+pre:[{q:'โปรแกรมใดใช้พิมพ์งาน?',o:['โปรแกรมวาดรูป','โปรแกรมพิมพ์งาน','โปรแกรมฟังเพลง','โปรแกรมเกม'],a:1,why:'โปรแกรมพิมพ์งานใช้พิมพ์'},{q:'การนั่งหน้าคอมที่ถูกวิธีคือ?',o:['นั่งหลังตรง ตาห่างจอ','นอนเล่น','นั่งชิดจอมาก','นั่งเอียง'],a:0,why:'หลังตรง ตาห่างจอ'},{q:'อยากรู้ว่าช้างกินอะไร ควรค้นว่าอะไร?',o:['ช้างกินอะไร','วันนี้วันอะไรเอ่ยช่วยบอกหน่อย','สวัสดี','ช้าง'],a:0,why:'คำค้นสั้น ชัดเจน'},{q:'ใช้คอมของเพื่อนต้องทำอย่างไร?',o:['เปิดเลย','ขออนุญาตก่อน','ลบไฟล์เพื่อน','เปลี่ยนรหัสเพื่อน'],a:1,why:'ต้องขออนุญาต'},{q:'โปรแกรมนำเสนอใช้ทำอะไร?',o:['เล่นเกม','เล่าเรื่องหน้าชั้น','ฟังเพลง','วาดรูปอย่างเดียว'],a:1,why:'ใช้นำเสนอ'},{q:'ควรพักสายตาทุกกี่นาที?',o:['5 ชั่วโมง','20 นาที','ไม่ต้องพัก','1 วัน'],a:1,why:'พักทุก 20 นาที'},{q:'แป้นพิมพ์ใช้ทำอะไร?',o:['พิมพ์ตัวหนังสือ','ฟังเพลง','เก็บไฟล์','ต่อเน็ต'],a:0,why:'พิมพ์'},{q:'ถ้าเจอข้อมูลไม่แน่ใจ ควรทำอย่างไร?',o:['เชื่อเลย','ถามครู / เช็กหลายเว็บ','แชร์ต่อเลย','ลบ'],a:1,why:'เช็กหลายแหล่ง'},{q:'โปรแกรมวาดรูปใช้ทำอะไร?',o:['พิมพ์รายงาน','วาดภาพ','ฟังเพลง','ค้นหา'],a:1,why:'วาดภาพ'},{q:'ข้อใดคือมารยาทที่ดี?',o:['แย่งคอมเพื่อน','ใช้คอมแล้วปิดให้เรียบร้อย','เปิดเสียงดัง','กินขนมใส่คีย์บอร์ด'],a:1,why:'ใช้แล้วปิดเรียบร้อย'}],
+work:[{q:'โปรแกรมพิมพ์งานใช้ทำอะไร?',o:['พิมพ์รายงาน','เล่นเกม','ฟังเพลง'],a:0},{q:'คำค้นที่ดีควรเป็นอย่างไร?',o:['สั้น ชัดเจน','ยาวมาก','พิมพ์มั่ว'],a:0},{q:'ใช้คอมเสร็จควรทำอย่างไร?',o:['ปิดให้เรียบร้อย','เปิดทิ้งไว้','ถอดปลั๊กแรงๆ'],a:0},{q:'นั่งหน้าคอมควรนั่งอย่างไร?',o:['หลังตรง','นอน','นั่งชิดจอ'],a:0},{q:'เจอข้อมูลไม่แน่ใจควรทำอย่างไร?',o:['ถามครู','แชร์ต่อเลย','เชื่อเลย'],a:0}]},
 {id:3,icon:'🏜️',title:'โซน 3 ทะเลทรายความจำ',sub:'ข้อมูล ไฟล์ และความจำ',desc:'ประเภทไฟล์ โฟลเดอร์ หน่วยความจำ KB MB GB',
-knowledge:`<div class="kbox"><h3>📁 ไฟล์และโฟลเดอร์</h3><p>ไฟล์คือ งาน 1 ชิ้น เช่น รายงาน รูป เพลง • โฟลเดอร์คือ ลิ้นชักเก็บไฟล์ให้เป็นหมวดหมู่<br>ประเภทไฟล์: <b>.docx</b> งานพิมพ์ 📄 • <b>.jpg</b> รูป 🖼️ • <b>.mp3</b> เพลง 🎵 • <b>.mp4</b> วิดีโอ 🎬<br>หน่วยความจำ: KB &lt; MB &lt; GB (GB ใหญ่สุด) • ตั้งชื่อไฟล์ให้จำง่าย เช่น <b>รายงานวิชาคอม-มะลิ.docx</b> • บันทึกงานบ่อยๆ กันงานหาย</p></div>`,
-pre:[
-{q:'ไฟล์ .jpg คือไฟล์อะไร?',o:['รูปภาพ','เพลง','งานพิมพ์','วิดีโอ'],a:0,why:'.jpg คือรูป'},
-{q:'หน่วยใดใหญ่ที่สุด?',o:['KB','MB','GB'],a:2,why:'GB ใหญ่สุด'},
-{q:'โฟลเดอร์มีไว้ทำอะไร?',o:['เก็บไฟล์เป็นหมวดหมู่','ฟังเพลง','เล่นเกม'],a:0,why:'โฟลเดอร์คือลิ้นชักเก็บไฟล์'},
-{q:'ไฟล์ .mp3 คืออะไร?',o:['รูป','เพลง','งานพิมพ์'],a:1,why:'.mp3 คือเพลง'},
-{q:'ไฟล์ .docx คืออะไร?',o:['วิดีโอ','งานพิมพ์','เพลง'],a:1,why:'.docx คืองานพิมพ์'},
-{q:'ถ้าจะเก็บรูป ควรใส่โฟลเดอร์ไหน?',o:['โฟลเดอร์รูปภาพ','โฟลเดอร์เพลง','โฟลเดอร์วิดีโอ'],a:0,why:'รูปอยู่โฟลเดอร์รูป'},
-{q:'หน่วยใดเล็กสุด?',o:['GB','MB','KB'],a:2,why:'KB เล็กสุด'},
-{q:'ตั้งชื่อไฟล์ที่ดีควรเป็นอย่างไร?',o:['จำง่าย บอกว่าเป็นงานอะไร','ตั้งมั่วๆ','ตั้งว่า aaaaa'],a:0,why:'จำง่าย'},
-{q:'ไฟล์ .mp4 คืออะไร?',o:['วิดีโอ','รูป','เพลง'],a:0,why:'.mp4 คือวิดีโอ'},
-{q:'กันงานหายควรทำอย่างไร?',o:['บันทึกบ่อยๆ','ไม่บันทึก','ปิดเครื่องเลย'],a:0,why:'บันทึกบ่อยๆ'}],
-work:[
-{q:'ไฟล์ .jpg อยู่หมวดไหน?',o:['รูปภาพ','เพลง','งานพิมพ์'],a:0},
-{q:'ไฟล์ .mp3 อยู่หมวดไหน?',o:['เพลง','รูปภาพ','วิดีโอ'],a:0},
-{q:'เรียงขนาดจากเล็กไปใหญ่?',o:['KB MB GB','GB MB KB','MB KB GB'],a:0},
-{q:'โฟลเดอร์คืออะไร?',o:['ลิ้นชักเก็บไฟล์','เพลง','เกม'],a:0},
-{q:'ตั้งชื่อไฟล์ควร?',o:['จำง่าย','มั่วๆ','ยาวมาก'],a:0}]},
+knowledge:`<div class="kbox"><h3>📁 ไฟล์และโฟลเดอร์</h3><p>ไฟล์คือ งาน 1 ชิ้น เช่น รายงาน รูป เพลง โฟลเดอร์คือ ลิ้นชักเก็บไฟล์ให้เป็นหมวดหมู่</p><p>ประเภทไฟล์: <b>.docx</b> งานพิมพ์ <b>.jpg</b> รูป <b>.mp3</b> เพลง <b>.mp4</b> วิดีโอ</p><p>หน่วยความจำ: KB น้อยกว่า MB น้อยกว่า GB GB ใหญ่สุด ตั้งชื่อไฟล์ให้จำง่าย เช่น รายงานวิชาคอม-มะลิ</p><p>บันทึกงานบ่อยๆ กันงานหาย</p></div>`,
+pre:[{q:'ไฟล์ .jpg คือไฟล์อะไร?',o:['รูปภาพ','เพลง','งานพิมพ์','วิดีโอ'],a:0,why:'.jpg คือรูป'},{q:'หน่วยใดใหญ่ที่สุด?',o:['KB','MB','GB'],a:2,why:'GB ใหญ่สุด'},{q:'โฟลเดอร์มีไว้ทำอะไร?',o:['เก็บไฟล์เป็นหมวดหมู่','ฟังเพลง','เล่นเกม'],a:0,why:'โฟลเดอร์คือลิ้นชักเก็บไฟล์'},{q:'ไฟล์ .mp3 คืออะไร?',o:['รูป','เพลง','งานพิมพ์'],a:1,why:'.mp3 คือเพลง'},{q:'ไฟล์ .docx คืออะไร?',o:['วิดีโอ','งานพิมพ์','เพลง'],a:1,why:'.docx คืองานพิมพ์'},{q:'ถ้าจะเก็บรูป ควรใส่โฟลเดอร์ไหน?',o:['โฟลเดอร์รูปภาพ','โฟลเดอร์เพลง','โฟลเดอร์วิดีโอ'],a:0,why:'รูปอยู่โฟลเดอร์รูป'},{q:'หน่วยใดเล็กสุด?',o:['GB','MB','KB'],a:2,why:'KB เล็กสุด'},{q:'ตั้งชื่อไฟล์ที่ดีควรเป็นอย่างไร?',o:['จำง่าย บอกว่าเป็นงานอะไร','ตั้งมั่วๆ','ตั้งว่า aaaaa'],a:0,why:'จำง่าย'},{q:'ไฟล์ .mp4 คืออะไร?',o:['วิดีโอ','รูป','เพลง'],a:0,why:'.mp4 คือวิดีโอ'},{q:'กันงานหายควรทำอย่างไร?',o:['บันทึกบ่อยๆ','ไม่บันทึก','ปิดเครื่องเลย'],a:0,why:'บันทึกบ่อยๆ'}],
+work:[{q:'ไฟล์ .jpg อยู่หมวดไหน?',o:['รูปภาพ','เพลง','งานพิมพ์'],a:0},{q:'ไฟล์ .mp3 อยู่หมวดไหน?',o:['เพลง','รูปภาพ','วิดีโอ'],a:0},{q:'เรียงขนาดจากเล็กไปใหญ่?',o:['KB MB GB','GB MB KB','MB KB GB'],a:0},{q:'โฟลเดอร์คืออะไร?',o:['ลิ้นชักเก็บไฟล์','เพลง','เกม'],a:0},{q:'ตั้งชื่อไฟล์ควร?',o:['จำง่าย','มั่วๆ','ยาวมาก'],a:0}]},
 {id:4,icon:'🏰',title:'โซน 4 อาณาจักรไซเบอร์',sub:'ความปลอดภัยไซเบอร์ + โค้ดดิ้ง',desc:'รหัสผ่านปลอดภัย ไม่บอกข้อมูลส่วนตัว ลำดับคำสั่ง',
-knowledge:`<div class="kbox"><h3>🔐 ปลอดภัยไซเบอร์ + โค้ดดิ้ง</h3><p>รหัสผ่านที่ดี: ยาว 8 ตัวขึ้นไป ผสมตัวเลข ตัวหนังสือ เช่น <b>Robo2024!</b> ไม่ใช้วันเกิด<br>ไม่บอกข้อมูลส่วนตัวให้คนแปลกหน้า: ชื่อ ที่อยู่ เบอร์โทร รหัสผ่าน โรงเรียน<br>ไม่คลิกลิงก์แปลกๆ ถ้าไม่แน่ใจถามครู / ผู้ปกครองก่อน<br>การคิดเชิงคำนวณ: แตกปัญหาเป็นขั้นตอนเล็กๆ แล้วเรียงลำดับคำสั่ง (อัลกอริทึม)<br>ตัวอย่างสั่ง ROBO กลับบ้าน: เดินหน้า 2 ก้าว → เลี้ยวขวา → เดินหน้า 1 ก้าว → ถึงบ้าน 🏠</p></div>`,
-pre:[
-{q:'ข้อใดคือรหัสผ่านที่ปลอดภัยที่สุด?',o:['1234','วันเกิด','Robo2024!','ชื่อตัวเอง'],a:2,why:'ยาว ผสมตัวเลขและตัวหนังสือ'},
-{q:'ถ้าคนแปลกหน้าขอเบอร์โทรในเกม ควรทำอย่างไร?',o:['บอกเลย','ไม่บอก และบอกครู/ผู้ปกครอง','บอกเพื่อนทุกคน','ให้รหัสด้วย'],a:1,why:'ไม่บอกข้อมูลส่วนตัว'},
-{q:'คำสั่งแรกที่ควรสั่ง ROBO คือ?',o:['เดินหน้า','ปิดเครื่อง','ลบไฟล์','นอน'],a:0,why:'ต้องเดินก่อน'},
-{q:'เจอลิงก์แปลกๆ ควรทำอย่างไร?',o:['คลิกเลย','ไม่คลิก ถามครูก่อน','แชร์ให้เพื่อน','ใส่รหัส'],a:1,why:'ลิงก์แปลกอาจอันตราย'},
-{q:'ข้อมูลใดไม่ควรบอกคนแปลกหน้า?',o:['สีที่ชอบ','เบอร์โทร','วิชาที่ชอบ','อาหารที่ชอบ'],a:1,why:'เบอร์โทรคือข้อมูลส่วนตัว'},
-{q:'รหัสผ่านที่ดีควรยาวกี่ตัว?',o:['2 ตัว','8 ตัวขึ้นไป','1 ตัว'],a:1,why:'ยาว 8 ตัวขึ้นไป'},
-{q:'การคิดเชิงคำนวณคืออะไร?',o:['แตกปัญหาเป็นขั้นตอน','เล่นเกมอย่างเดียว','จำสูตร'],a:0,why:'แตกเป็นขั้นตอนเล็กๆ'},
-{q:'ถ้า ROBO เดินชนกำแพง ควรทำอย่างไร?',o:['ลองเส้นทางใหม่','เลิกเล่น','ทุบเครื่อง'],a:0,why:'ลองใหม่ได้'},
-{q:'ถ้าเพื่อนขอรหัสผ่านเรา ควร?',o:['ให้เลย','ไม่ให้','ให้ครึ่งหนึ่ง'],a:1,why:'รหัสเป็นของส่วนตัว'},
-{q:'ลำดับคำสั่งเรียกว่าอะไร?',o:['อัลกอริทึม','เพลง','รูปภาพ'],a:0,why:'ลำดับคำสั่ง = อัลกอริทึม'}],
-work:[
-{q:'รหัสผ่านที่ดีควรเป็นอย่างไร?',o:['ยาว 8 ตัว ผสมตัวเลข','1234','วันเกิด'],a:0},
-{q:'คนแปลกหน้าขอที่อยู่ ควร?',o:['ไม่บอก','บอกเลย','บอกเพื่อน'],a:0},
-{q:'สั่ง ROBO กลับบ้านต้องทำอย่างไร?',o:['เรียงคำสั่งเป็นขั้นตอน','กดมั่ว','ไม่ต้องสั่ง'],a:0},
-{q:'เจอลิงก์แปลกควร?',o:['ไม่คลิก ถามครู','คลิกเลย','แชร์'],a:0},
-{q:'ข้อมูลส่วนตัวคือ?',o:['เบอร์โทร ที่อยู่','สีที่ชอบ','อาหารที่ชอบ'],a:0}]}
+knowledge:`<div class="kbox"><h3>🔐 ปลอดภัยไซเบอร์ + โค้ดดิ้ง</h3><p>รหัสผ่านที่ดี: ยาว 8 ตัวขึ้นไป ผสมตัวเลข ตัวหนังสือ เช่น Robo2024 ไม่ใช้วันเกิด</p><p>ไม่บอกข้อมูลส่วนตัวให้คนแปลกหน้า: ชื่อ ที่อยู่ เบอร์โทร รหัสผ่าน โรงเรียน</p><p>ไม่คลิกลิงก์แปลกๆ ถ้าไม่แน่ใจถามครู หรือผู้ปกครองก่อน</p><p>การคิดเชิงคำนวณ: แตกปัญหาเป็นขั้นตอนเล็กๆ แล้วเรียงลำดับคำสั่ง ตัวอย่างสั่ง ROBO กลับบ้าน: เดินหน้า 2 ก้าว เลี้ยวขวา เดินหน้า 1 ก้าว ถึงบ้าน</p></div>`,
+pre:[{q:'ข้อใดคือรหัสผ่านที่ปลอดภัยที่สุด?',o:['1234','วันเกิด','Robo2024!','ชื่อตัวเอง'],a:2,why:'ยาว ผสมตัวเลขและตัวหนังสือ'},{q:'ถ้าคนแปลกหน้าขอเบอร์โทรในเกม ควรทำอย่างไร?',o:['บอกเลย','ไม่บอก และบอกครู/ผู้ปกครอง','บอกเพื่อนทุกคน','ให้รหัสด้วย'],a:1,why:'ไม่บอกข้อมูลส่วนตัว'},{q:'คำสั่งแรกที่ควรสั่ง ROBO คือ?',o:['เดินหน้า','ปิดเครื่อง','ลบไฟล์','นอน'],a:0,why:'ต้องเดินก่อน'},{q:'เจอลิงก์แปลกๆ ควรทำอย่างไร?',o:['คลิกเลย','ไม่คลิก ถามครูก่อน','แชร์ให้เพื่อน','ใส่รหัส'],a:1,why:'ลิงก์แปลกอาจอันตราย'},{q:'ข้อมูลใดไม่ควรบอกคนแปลกหน้า?',o:['สีที่ชอบ','เบอร์โทร','วิชาที่ชอบ','อาหารที่ชอบ'],a:1,why:'เบอร์โทรคือข้อมูลส่วนตัว'},{q:'รหัสผ่านที่ดีควรยาวกี่ตัว?',o:['2 ตัว','8 ตัวขึ้นไป','1 ตัว'],a:1,why:'ยาว 8 ตัวขึ้นไป'},{q:'การคิดเชิงคำนวณคืออะไร?',o:['แตกปัญหาเป็นขั้นตอน','เล่นเกมอย่างเดียว','จำสูตร'],a:0,why:'แตกเป็นขั้นตอนเล็กๆ'},{q:'ถ้า ROBO เดินชนกำแพง ควรทำอย่างไร?',o:['ลองเส้นทางใหม่','เลิกเล่น','ทุบเครื่อง'],a:0,why:'ลองใหม่ได้'},{q:'ถ้าเพื่อนขอรหัสผ่านเรา ควร?',o:['ให้เลย','ไม่ให้','ให้ครึ่งหนึ่ง'],a:1,why:'รหัสเป็นของส่วนตัว'},{q:'ลำดับคำสั่งเรียกว่าอะไร?',o:['อัลกอริทึม','เพลง','รูปภาพ'],a:0,why:'ลำดับคำสั่ง = อัลกอริทึม'}],
+work:[{q:'รหัสผ่านที่ดีควรเป็นอย่างไร?',o:['ยาว 8 ตัว ผสมตัวเลข','1234','วันเกิด'],a:0},{q:'คนแปลกหน้าขอที่อยู่ ควร?',o:['ไม่บอก','บอกเลย','บอกเพื่อน'],a:0},{q:'สั่ง ROBO กลับบ้านต้องทำอย่างไร?',o:['เรียงคำสั่งเป็นขั้นตอน','กดมั่ว','ไม่ต้องสั่ง'],a:0},{q:'เจอลิงก์แปลกควร?',o:['ไม่คลิก ถามครู','คลิกเลย','แชร์'],a:0},{q:'ข้อมูลส่วนตัวคือ?',o:['เบอร์โทร ที่อยู่','สีที่ชอบ','อาหารที่ชอบ'],a:0}]}
 ];
-
 let state = JSON.parse(localStorage.getItem('roboPortal')||'null') || {student:{num:'',name:'',room:'ป.4/1'},char:0,level:0,xp:0,stars:0,progress:{},allStudents:[]};
 let currentZone=1, currentStep='pre';
 let teacherPass = localStorage.getItem('roboTeacherPass')||'1234';
-
 function save(){ localStorage.setItem('roboPortal', JSON.stringify(state)); updateHeader(); }
-function updateHeader(){
-  document.getElementById('studentLabel').textContent = state.student.name ? `${state.student.name} • ${state.student.room} • เลขที่ ${state.student.num||'-'}` : 'ยังไม่กรอกชื่อนักเรียน';
-  document.getElementById('xpLabel').textContent = 'XP '+state.xp;
-  document.getElementById('starLabel').textContent = '⭐ '+state.stars+' ดาว';
-  document.getElementById('xpBar').style.width = Math.min(100, state.xp/2)+'%';
-  let b=''; if((state.progress[1]?.worksheetDone)) b+='🏅 นักสำรวจ '; if((state.progress[2]?.worksheetDone)) b+='🏅 นักผจญภัย '; if((state.progress[4]?.worksheetDone)) b+='🏆 ผู้ช่วย ROBO'; if(!b) b='ยังไม่มีเหรียญ เล่นให้ครบ 1 โซนเพื่อรับเหรียญแรก!';
-  document.getElementById('badges').innerHTML='<p>'+b+'</p>';
-}
-function renderChars(){
-  document.getElementById('chars').innerHTML = CHARS.map((c,i)=>`<div class="choice ${state.char===i?'sel':''}" onclick="state.char=${i};save();renderChars();playClick()"><div style="font-size:36px">${c.e}</div>${c.n}</div>`).join('');
-  document.getElementById('levels').innerHTML = LEVELS.map((l,i)=>`<div class="choice ${state.level===i?'sel':''}" onclick="state.level=${i};save();renderChars();playClick()"><b>${l.n}</b><br>${l.d}<br>ถูก 1 ข้อ = ${l.xp} XP</div>`).join('');
-}
+function updateHeader(){ document.getElementById('studentLabel').textContent = state.student.name ? `${state.student.name} • ${state.student.room} • เลขที่ ${state.student.num||'-'}` : 'ยังไม่กรอกชื่อนักเรียน'; document.getElementById('xpLabel').textContent='XP '+state.xp; document.getElementById('starLabel').textContent='⭐ '+state.stars+' ดาว'; document.getElementById('xpBar').style.width=Math.min(100,state.xp/2)+'%'; let b=''; if(state.progress[1]?.worksheetDone) b+='🏅 นักสำรวจ '; if(state.progress[2]?.worksheetDone) b+='🏅 นักผจญภัย '; if(state.progress[4]?.worksheetDone) b+='🏆 ผู้ช่วย ROBO'; if(!b) b='ยังไม่มีเหรียญ เล่นให้ครบ 1 โซนเพื่อรับเหรียญแรก!'; document.getElementById('badges').innerHTML='<p>'+b+'</p>'; }
+function renderChars(){ document.getElementById('chars').innerHTML=CHARS.map((c,i)=>`<div class="choice ${state.char===i?'sel':''}" onclick="state.char=${i};save();renderChars();playClick()"><div style="font-size:36px">${c.e}</div>${c.n}</div>`).join(''); document.getElementById('levels').innerHTML=LEVELS.map((l,i)=>`<div class="choice ${state.level===i?'sel':''}" onclick="state.level=${i};save();renderChars();playClick()"><b>${l.n}</b><br>${l.d}<br>ถูก 1 ข้อ = ${l.xp} XP</div>`).join(''); }
 function isZoneUnlocked(id){ if(id===1) return true; return !!state.progress[id-1]?.worksheetDone || state.unlockedAll; }
-function renderZones(){
-  document.getElementById('zones').innerHTML = DATA.map(z=>{
-    let p=state.progress[z.id]||{}; let done = p.worksheetDone? '✅ ผ่านแล้ว': (p.pretestDone? '⏳ กำลังเล่น':'🔒 ยังไม่เริ่ม');
-    let stars = p.stars||0;
-    return `<div class="card zone ${isZoneUnlocked(z.id)?'':'locked'}" onclick="openZone(${z.id})"><div style="font-size:44px">${z.icon}</div><h3>${z.title}</h3><p>${z.sub}</p><p class="small">${z.desc}</p><p><span class="badge">${done}</span> ⭐ ${stars} ดาว</p><button class="btn btn-primary">${isZoneUnlocked(z.id)?'เข้าโซน ▶️':'ล็อกอยู่ 🔒'}</button></div>`
-  }).join('');
-}
-function saveStudent(){
-  state.student.num=document.getElementById('num').value; state.student.name=document.getElementById('name').value.trim(); state.student.room=document.getElementById('room').value;
-  if(!state.student.name){ alert('กรอกชื่อ-นามสกุลก่อนนะ'); return; }
-  // เก็บรายชื่อนักเรียนสำหรับครู
-  let ex = state.allStudents.find(s=>s.name===state.student.name && s.room===state.student.room);
-  if(!ex) state.allStudents.push({name:state.student.name, num:state.student.num, room:state.student.room});
-  save(); renderZones(); playUnlock(); confetti(); alert('บันทึกแล้ว! เลือกโซน 1 เริ่มผจญภัยได้เลย');
-}
+function renderZones(){ document.getElementById('zones').innerHTML=DATA.map(z=>{ let p=state.progress[z.id]||{}; let done=p.worksheetDone?'✅ ผ่านแล้ว':(p.pretestDone?'⏳ กำลังเล่น':'🔒 ยังไม่เริ่ม'); return `<div class="card" onclick="openZone(${z.id})"><div style="font-size:44px">${z.icon}</div><h3>${z.title}</h3><p>${z.sub}</p><p class="small">${z.desc}</p><p><span class="badge">${done}</span> ⭐ ${p.stars||0} ดาว</p><button class="btn btn-primary">${isZoneUnlocked(z.id)?'เข้าโซน ▶️':'ล็อกอยู่ 🔒'}</button></div>`; }).join(''); }
+function saveStudent(){ state.student.num=document.getElementById('num').value; state.student.name=document.getElementById('name').value.trim(); state.student.room=document.getElementById('room').value; if(!state.student.name){ alert('กรอกชื่อ-นามสกุลก่อนนะ'); return; } let ex=state.allStudents.find(s=>s.name===state.student.name && s.room===state.student.room); if(!ex) state.allStudents.push({name:state.student.name,num:state.student.num,room:state.student.room}); save(); renderZones(); playUnlock(); confetti(); alert('บันทึกแล้ว! เลือกโซน 1 เริ่มผจญภัยได้เลย'); }
 function unlockAll(){ if(confirm('ปลดล็อกทุกโซนสำหรับครูใช่ไหม?')){ state.unlockedAll=true; save(); renderZones(); } }
 function resetAll(){ if(confirm('เริ่มใหม่ทั้งหมดใช่ไหม? คะแนนจะหายหมด')){ localStorage.removeItem('roboPortal'); location.reload(); } }
-function showHome(){ document.getElementById('homeView').classList.remove('hidden'); document.getElementById('zoneView').classList.add('hidden'); renderZones(); updateHeader(); }
-function openZone(id){
-  if(!state.student.name){ alert('กรอกชื่อนักเรียนที่หน้าแรกก่อนนะ'); return; }
-  if(!isZoneUnlocked(id)){ alert('โซนนี้ยังล็อกอยู่ ทำโซนก่อนหน้าให้จบก่อนนะ'); playWrong(); return; }
-  currentZone=id; let p=state.progress[id]||{}; if(p.worksheetDone) currentStep='pre'; else if(p.gameDone) currentStep='work'; else if(p.knowledgeDone) currentStep='game'; else if(p.pretestDone) currentStep='knowledge'; else currentStep='pre';
-  document.getElementById('homeView').classList.add('hidden'); document.getElementById('zoneView').classList.remove('hidden'); renderZone();
-}
+function showHome(){ try{stopTTS();}catch(e){} document.getElementById('homeView').classList.remove('hidden'); document.getElementById('zoneView').classList.add('hidden'); renderZones(); updateHeader(); }
+function openZone(id){ if(!state.student.name){ alert('กรอกชื่อนักเรียนที่หน้าแรกก่อนนะ'); return; } if(!isZoneUnlocked(id)){ alert('โซนนี้ยังล็อกอยู่ ทำโซนก่อนหน้าให้จบก่อนนะ'); playWrong(); return; } currentZone=id; let p=state.progress[id]||{}; if(p.worksheetDone) currentStep='pre'; else if(p.gameDone) currentStep='work'; else if(p.knowledgeDone) currentStep='game'; else if(p.pretestDone) currentStep='knowledge'; else currentStep='pre'; document.getElementById('homeView').classList.add('hidden'); document.getElementById('zoneView').classList.remove('hidden'); renderZone(); }
 function getProgress(id){ return state.progress[id]||{}; }
-function renderZone(){
-  let z=DATA.find(x=>x.id===currentZone); let p=getProgress(currentZone);
-  document.getElementById('zoneTitle').textContent = `${z.icon} ${z.title} - ${z.sub}`;
-  document.getElementById('zoneDesc').textContent = 'ลำดับ: 1.แบบทดสอบก่อนเรียน → 2.ใบความรู้ → 3.เกม → 4.ใบงาน  • ตอบแบบไหนก็ได้ ถ้าตรงกันถือว่าถูกนะ!';
-  let steps=[['pre','1.แบบทดสอบก่อนเรียน'],['knowledge','2.ใบความรู้'],['game','3.เกม'],['work','4.ใบงาน']];
-  let locked={pre:false, knowledge:!p.pretestDone, game:!p.knowledgeDone, work:!p.gameDone};
-  document.getElementById('stepper').innerHTML = steps.map(([k,label],i)=>{
-    let done = (k==='pre'&&p.pretestDone)||(k==='knowledge'&&p.knowledgeDone)||(k==='game'&&p.gameDone)||(k==='work'&&p.worksheetDone);
-    let cls = done?'done':(currentStep===k?'now':'');
-    return `<div class="stepdot ${cls}">${done?'✓':(locked[k]?'🔒':i+1)}</div><div style="font-size:13px;font-weight:700">${label}</div>${i<3?'<div>→</div>':''}`
-  }).join('');
-  document.getElementById('tabs').innerHTML = steps.map(([k,label])=>`<div class="tab ${currentStep===k?'active':''} ${locked[k]?'locked':''}" onclick="goStep('${k}')">${label} ${locked[k]?'🔒':''}</div>`).join('');
-  let c=document.getElementById('zoneContent');
-  if(currentStep==='pre') c.innerHTML = renderPretest(z);
-  else if(currentStep==='knowledge') c.innerHTML = z.knowledge + `<br><button class="btn btn-primary" onclick="finishKnowledge()">✅ อ่านจบแล้ว ไปเล่นเกม ➡️</button>`;
-  else if(currentStep==='game') c.innerHTML = renderGame(z);
-  else c.innerHTML = renderWork(z);
-  if(currentStep==='game') initGame(z);
-}
-function goStep(k){ let p=getProgress(currentZone); let locked={pre:false, knowledge:!p.pretestDone, game:!p.knowledgeDone, work:!p.gameDone}; if(locked[k]){ playWrong(); alert('ขั้นนี้ยังล็อกอยู่ ทำขั้นก่อนหน้าให้เสร็จก่อนนะ'); return; } currentStep=k; playClick(); renderZone(); }
+function renderZone(){ let z=DATA.find(x=>x.id===currentZone); let p=getProgress(currentZone); document.getElementById('zoneTitle').textContent=`${z.icon} ${z.title} - ${z.sub}`; document.getElementById('zoneDesc').textContent='ลำดับ: 1.แบบทดสอบก่อนเรียน → 2.ใบความรู้ → 3.เกม → 4.ใบงาน • ตอบแบบไหนก็ได้ ถ้าตรงกันถือว่าถูกนะ!'; let steps=[['pre','1.แบบทดสอบก่อนเรียน'],['knowledge','2.ใบความรู้'],['game','3.เกม'],['work','4.ใบงาน']]; let locked={pre:false,knowledge:!p.pretestDone,game:!p.knowledgeDone,work:!p.gameDone}; document.getElementById('stepper').innerHTML=steps.map(([k,label],i)=>{ let done=(k==='pre'&&p.pretestDone)||(k==='knowledge'&&p.knowledgeDone)||(k==='game'&&p.gameDone)||(k==='work'&&p.worksheetDone); let cls=done?'done':(currentStep===k?'now':''); return `<div class="stepdot ${cls}">${done?'✓':(locked[k]?'🔒':i+1)}</div><div style="font-size:13px;font-weight:700">${label}</div>${i<3?'<div>→</div>':''}`; }).join(''); document.getElementById('tabs').innerHTML=steps.map(([k,label])=>`<div class="tab ${currentStep===k?'active':''} ${locked[k]?'locked':''}" onclick="goStep('${k}')">${label} ${locked[k]?'🔒':''}</div>`).join(''); let c=document.getElementById('zoneContent'); if(currentStep==='pre') c.innerHTML=renderPretest(z); else if(currentStep==='knowledge') c.innerHTML=renderKnowledge(z); else if(currentStep==='game') c.innerHTML=renderGame(z); else c.innerHTML=renderWork(z); if(currentStep==='game') initGame(z); if(currentStep==='pre') setTimeout(showPre,80); }
+function goStep(k){ stopTTS(); let p=getProgress(currentZone); let locked={pre:false,knowledge:!p.pretestDone,game:!p.knowledgeDone,work:!p.gameDone}; if(locked[k]){ playWrong(); alert('ขั้นนี้ยังล็อกอยู่ ทำขั้นก่อนหน้าให้เสร็จก่อนนะ'); return; } currentStep=k; playClick(); renderZone(); }
+function renderKnowledge(z){ return `<div class="tts-box"><b>🔊 อ่านให้ฟัง - สำหรับเพื่อนที่อ่านยังไม่คล่อง</b><br><span id="ttsStatus" style="font-weight:700">กดปุ่มอ่านให้ฟัง แล้วฟังไปพร้อมกับดูตัวหนังสือได้เลย</span><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button class="btn btn-navy" onclick="speakKnowledge()">🔊 อ่านให้ฟังทั้งหมด</button><button class="btn" onclick="pauseTTS()">⏸️ หยุดชั่วคราว / เล่นต่อ</button><button class="btn" onclick="stopTTS()">⏹️ หยุดอ่าน</button><button class="btn tts-mode" id="mode-soft" onclick="setTTSMode('soft')">🌸 เสียงนุ่ม 0.75x</button><button class="btn tts-mode" id="mode-clear" onclick="setTTSMode('clear')">🎯 เสียงชัด 0.85x</button><label style="display:flex;align-items:center;gap:6px;font-weight:800">🐢 ช้า <input id="ttsRate" type="range" min="0.6" max="1.0" step="0.05" value="0.78" style="width:110px" onchange="changeRate(this.value)"> 🐇 เร็ว <span id="ttsRateLabel">0.78x</span></label></div><p class="small">เสียงจะพูดช้าๆ ชัดๆ ทีละประโยค เว้นจังหวะให้คิดตาม ประโยคที่กำลังอ่านจะเป็นสีเหลือง</p></div>`+z.knowledge+`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="speakPara(0)">🔊 อ่านย่อหน้าแรก</button><button class="btn" onclick="speakPara(1)">🔊 อ่านย่อหน้าถัดไป</button></div><br><button class="btn btn-primary" onclick="stopTTS();finishKnowledge()">✅ อ่านจบแล้ว ไปเล่นเกม ➡️</button>`; }
 function finishKnowledge(){ let p=state.progress[currentZone]||{}; p.knowledgeDone=true; state.progress[currentZone]=p; save(); playUnlock(); confetti(); alert('ปลดล็อกเกมแล้ว!'); currentStep='game'; renderZone(); }
-
-// PRETEST
 let preIdx=0, preScore=0, preAnswered=false;
-function renderPretest(z){ preIdx=0; preScore=0; preAnswered=false; return `<h3>📝 แบบทดสอบก่อนเรียน - ${z.title} (10 ข้อ)</h3><p>ตอบให้ครบทุกข้อ ไม่ต้องกลัวผิดนะ ROBO อยู่ข้างๆ</p><div id="preBox"></div>`; }
-function showPre(){ let z=DATA.find(x=>x.id===currentZone); if(preIdx>=10){ finishPre(z); return; } let q=z.pre[preIdx]; preAnswered=false; document.getElementById('preBox').innerHTML=`<div class="qcard"><b>ข้อ ${preIdx+1}/10: ${q.q}</b>${q.o.map((o,i)=>`<div class="opt" onclick="answerPre(${i},this)">${String.fromCharCode(65+i)}. ${o}</div>`).join('')}<div id="preExplain"></div></div>`; }
+function renderPretest(z){ preIdx=0; preScore=0; return `<h3>📝 แบบทดสอบก่อนเรียน - ${z.title} (10 ข้อ)</h3><p>ตอบให้ครบทุกข้อ ไม่ต้องกลัวผิดนะ ROBO อยู่ข้างๆ</p><div id="preBox"></div>`; }
+function showPre(){ let z=DATA.find(x=>x.id===currentZone); if(preIdx>=10){ finishPre(); return; } let q=z.pre[preIdx]; preAnswered=false; document.getElementById('preBox').innerHTML=`<div class="qcard"><b>ข้อ ${preIdx+1}/10: ${q.q}</b>${q.o.map((o,i)=>`<div class="opt" onclick="answerPre(${i},this)">${String.fromCharCode(65+i)}. ${o}</div>`).join('')}<div id="preExplain"></div></div>`; }
 function answerPre(i,el){ if(preAnswered) return; preAnswered=true; let z=DATA.find(x=>x.id===currentZone); let q=z.pre[preIdx]; let opts=document.querySelectorAll('.opt'); if(i===q.a){ el.classList.add('correct'); playCorrect(); confetti(); preScore++; document.getElementById('preExplain').innerHTML=`<p style="color:#16a34a;font-weight:800">✅ ถูกต้อง! ${['เก่งมาก!','สุดยอด!','ถูกต้อง! ROBO ดีใจสุดๆ'][Math.floor(Math.random()*3)]} ${q.why}</p>`; } else { el.classList.add('wrong'); opts[q.a].classList.add('correct'); playWrong(); document.getElementById('preExplain').innerHTML=`<p style="color:#dc2626;font-weight:800">💡 เกือบแล้ว! ลองอีกครั้งนะ คำตอบที่ถูกคือ ${q.o[q.a]} เพราะ ${q.why}</p>`; } document.getElementById('preExplain').innerHTML+=`<br><button class="btn btn-primary" onclick="nextPre()">ข้อต่อไป ➡️</button>`; }
-function nextPre(){ preIdx++; if(preIdx>=10){ finishPre(); } else showPre(); }
-function finishPre(){ let z=DATA.find(x=>x.id===currentZone); let xp = preScore * LEVELS[state.level].xp; state.xp+=xp; let stars = preScore>=8?3:(preScore>=5?2:1); let p=state.progress[currentZone]||{}; p.pretestDone=true; p.preScore=preScore; p.stars=Math.max(p.stars||0, stars); state.progress[currentZone]=p; save(); document.getElementById('preBox').innerHTML=`<div class="card" style="text-align:center"><h2>🎉 ทำแบบทดสอบก่อนเรียนจบแล้ว!</h2><p>ได้ ${preScore}/10 ข้อ • รับ ${xp} XP • ⭐ ${stars} ดาว</p><p>ตอนนี้หนูรู้แล้วว่าตัวเองรู้อะไรบ้าง ไปอ่านใบความรู้กัน!</p><button class="btn btn-primary" onclick="goStep('knowledge')">ไปใบความรู้ ➡️</button></div>`; playUnlock(); confetti(); }
-// need to call showPre after render
-setTimeout(()=>{ if(document.getElementById('preBox')) showPre(); },50);
-
-// WORKSHEET
+function nextPre(){ preIdx++; if(preIdx>=10) finishPre(); else showPre(); }
+function finishPre(){ let xp=preScore*LEVELS[state.level].xp; state.xp+=xp; let stars=preScore>=8?3:(preScore>=5?2:1); let p=state.progress[currentZone]||{}; p.pretestDone=true; p.preScore=preScore; p.stars=Math.max(p.stars||0,stars); state.progress[currentZone]=p; save(); document.getElementById('preBox').innerHTML=`<div class="card" style="text-align:center"><h2>🎉 ทำแบบทดสอบก่อนเรียนจบแล้ว!</h2><p>ได้ ${preScore}/10 ข้อ • รับ ${xp} XP • ⭐ ${stars} ดาว</p><button class="btn btn-primary" onclick="goStep('knowledge')">ไปใบความรู้ ➡️</button></div>`; playUnlock(); confetti(); }
 function renderWork(z){ return `<h3>✏️ ใบงาน - ${z.title} (ทำต่อท้าย)</h3><p>ตอบให้ครบทุกข้อ ถ้าตรงกันถือว่าถูกนะ!</p><div id="workBox">${z.work.map((q,i)=>`<div class="qcard"><b>ข้อ ${i+1}: ${q.q}</b>${q.o.map((o,oi)=>`<div class="opt" onclick="answerWork(this,${i},${oi},${q.a})">${o}</div>`).join('')}<div id="wexp${i}"></div></div>`).join('')}<button class="btn btn-primary" onclick="finishWork()">✅ ส่งใบงาน จบโซนนี้</button></div>`; }
 let workCorrect={};
 function answerWork(el,qi,oi,ans){ let box=document.getElementById('wexp'+qi); if(oi===ans){ el.classList.add('correct'); playCorrect(); box.innerHTML='<b style="color:#16a34a">✅ ถูกต้อง!</b>'; workCorrect[qi]=1; } else { el.classList.add('wrong'); playWrong(); box.innerHTML='<b style="color:#dc2626">💡 เกือบแล้ว! ลองกดข้อที่ตรงกันอีกครั้งนะ</b>'; } }
-function finishWork(){ let z=DATA.find(x=>x.id===currentZone); let correct=Object.values(workCorrect).filter(v=>v).length; let xp=correct*10; state.xp+=xp; let p=state.progress[currentZone]||{}; p.worksheetDone=true; p.workScore=correct; p.stars=Math.max(p.stars||0, correct>=4?3:2); state.progress[currentZone]=p; save(); playUnlock(); confetti(); alert(`ส่งใบงานแล้ว! ถูก ${correct}/${z.work.length} ข้อ รับ ${xp} XP จบโซนนี้แล้ว!`); showHome(); }
-
-// GAMES
-function renderGame(z){
-  if(z.id===1) return `<h3>🎮 เกมจับคู่ความจำ - กดการ์ดใบไหนก่อนก็ได้ ขอแค่คู่ตรงกันถือว่าถูก!</h3><p>พลิกการ์ด 2 ใบ ถ้าเป็นคู่ที่ตรงกันจะได้คะแนน ตอบแบบไหนก็ได้ถ้าตรงกันถือว่าถูก</p><div class="grid g4" id="memGrid"></div><p id="memInfo">จับคู่ถูก: 0/6</p><button class="btn btn-primary" onclick="finishGame()">✅ จบเกม ไปทำใบงาน ➡️</button>`;
-  if(z.id===2) return `<h3>🎮 เกมตอบไวเมืองดิจิทัล - กดตรงไหนก็ได้บนการ์ดคำตอบทั้งใบ!</h3><p>เวลา 60 วินาที ตอบให้ได้มากที่สุด</p><p>เวลา: <span id="timer">60</span> วินาที | คะแนน: <span id="speedScore">0</span></p><div id="speedBox"></div>`;
-  if(z.id===3) return `<h3>🎮 เกมนักจัดไฟล์ - ลากก็ได้ กดก็ได้!</h3><p>วิธีเล่น: <b>กดที่ไฟล์ก่อน แล้วมากดที่โฟลเดอร์ที่ถูก</b> หรือลากไฟล์ไปใส่โฟลเดอร์ก็ได้ ไฟล์ไหนหมวดเดียวกันใส่โฟลเดอร์นั้น</p><p>ไฟล์ที่เลือก: <span id="selFile">ยังไม่เลือก</span> | จัดถูกแล้ว: <span id="fileScore">0/6</span></p><div class="grid g3" id="fileGrid"></div><div class="grid g2" id="folderGrid" style="margin-top:12px"></div><button class="btn btn-primary" onclick="finishGame()">✅ จบเกม ไปทำใบงาน ➡️</button>`;
-  if(z.id===4) return `<h3>🎮 เกมช่วย ROBO กลับบ้าน - เดินทางไหนก็ได้ ขอแค่ถึงบ้าน!</h3><p>กดเพิ่มคำสั่ง แล้วกด <b>เริ่มเดิน</b> เดินอ้อมทางไหนก็ได้ ขอแค่ถึงบ้านโดยไม่ชนกำแพง ⬛ ถือว่าชนะ!</p><p>คำสั่งของหนู: <span id="cmds"></span></p><div style="text-align:center"><button class="btn btn-navy" onclick="addCmd('⬆️')">⬆️ เดินขึ้น</button> <button class="btn btn-navy" onclick="addCmd('⬇️')">⬇️ เดินลง</button> <button class="btn btn-navy" onclick="addCmd('⬅️')">⬅️ เดินซ้าย</button> <button class="btn btn-navy" onclick="addCmd('➡️')">➡️ เดินขวา</button> <button class="btn btn-ghost" onclick="clearCmds()">ลบทั้งหมด</button> <button class="btn btn-green" onclick="runRobo()">▶️ เริ่มเดิน</button></div><div class="grid5" id="roboGrid"></div><p id="roboMsg"></p><button class="btn btn-primary" onclick="finishGame()">✅ จบเกม ไปทำใบงาน ➡️</button>`;
-}
-let memPairs=[], memOpen=[], memMatched=0, speedIdx=0, speedScore=0, speedTime=60, speedTimer=null, fileSel=null, fileDone=0, cmds=[];
-function initGame(z){
-  if(currentStep!=='game') return;
-  if(z.id===1){ memPairs=[['🖱️','รับข้อมูล'],['🧠','ประมวลผล'],['🖥️','แสดงผล'],['💾','เก็บข้อมูล'],['⌨️','รับข้อมูล'],['🖨️','แสดงผล']]; let cards=[]; memPairs.forEach((p,i)=>{ cards.push({t:p[0],pair:i}); cards.push({t:p[1],pair:i}); }); cards.sort(()=>Math.random()-.5); memOpen=[]; memMatched=0; document.getElementById('memGrid').innerHTML=cards.map((c,i)=>`<button class="memory" onclick="flipMem(${i},this,'${c.t}',${c.pair})">?</button>`).join(''); }
-  if(z.id===2){ speedIdx=0; speedScore=0; speedTime=60; clearInterval(speedTimer); speedTimer=setInterval(()=>{ speedTime--; let t=document.getElementById('timer'); if(t) t.textContent=speedTime; if(speedTime<=0){ clearInterval(speedTimer); alert('หมดเวลา! ได้ '+speedScore+' คะแนน'); finishGame(); } },1000); showSpeed(); }
-  if(z.id===3){ let files=[['รายงาน.docx','งานพิมพ์'],['รูปแมว.jpg','รูปภาพ'],['เพลง.mp3','เพลง'],['วิดีโอ.mp4','วิดีโอ'],['รูปบ้าน.jpg','รูปภาพ'],['งานพิมพ์.docx','งานพิมพ์']]; fileSel=null; fileDone=0; document.getElementById('fileGrid').innerHTML=files.map((f,i)=>`<button class="filebtn" id="f${i}" onclick="selectFile(${i},'${f[0]}','${f[1]}')">${f[0]}</button>`).join(''); document.getElementById('folderGrid').innerHTML=['งานพิมพ์','รูปภาพ','เพลง','วิดีโอ'].map(f=>`<div class="folder" onclick="chooseFolder('${f}')">📁 ${f}</div>`).join(''); window._files=files; }
-  if(z.id===4){ cmds=[]; drawRobo(0,0); updateCmds(); }
-}
-function flipMem(i,el,txt,pair){ if(el.classList.contains('matched')||el.classList.contains('open')) return; el.textContent=txt; el.classList.add('open'); playClick(); memOpen.push({el,pair}); if(memOpen.length===2){ let a=memOpen[0], b=memOpen[1]; if(a.pair===b.pair){ a.el.classList.add('matched'); b.el.classList.add('matched'); playCorrect(); confetti(); memMatched++; document.getElementById('memInfo').textContent=`จับคู่ถูก: ${memMatched}/6`; memOpen=[]; if(memMatched===6){ alert('เก่งมาก! จับคู่ครบทุกคู่แล้ว!'); } } else { playWrong(); setTimeout(()=>{ a.el.textContent='?'; b.el.textContent='?'; a.el.classList.remove('open'); b.el.classList.remove('open'); },700); memOpen=[]; } } }
+function finishWork(){ let z=DATA.find(x=>x.id===currentZone); let correct=Object.values(workCorrect).filter(v=>v).length; let xp=correct*10; state.xp+=xp; let p=state.progress[currentZone]||{}; p.worksheetDone=true; p.workScore=correct; p.stars=Math.max(p.stars||0,correct>=4?3:2); state.progress[currentZone]=p; save(); playUnlock(); confetti(); alert(`ส่งใบงานแล้ว! ถูก ${correct}/${z.work.length} ข้อ รับ ${xp} XP จบโซนนี้แล้ว!`); showHome(); }
+function renderGame(z){ if(z.id===1) return `<h3>🎮 เกมจับคู่ความจำ - กดการ์ดใบไหนก่อนก็ได้ ขอแค่คู่ตรงกันถือว่าถูก!</h3><p>พลิกการ์ด 2 ใบ ถ้าเป็นคู่ที่ตรงกันจะได้คะแนน</p><div class="grid g4" id="memGrid"></div><p id="memInfo">จับคู่ถูก: 0/6</p><button class="btn btn-primary" onclick="finishGame()">✅ จบเกม ไปทำใบงาน ➡️</button>`; if(z.id===2) return `<h3>🎮 เกมตอบไวเมืองดิจิทัล - กดตรงไหนก็ได้บนการ์ดคำตอบทั้งใบ!</h3><p>เวลา 60 วินาที</p><p>เวลา: <span id="timer">60</span> วินาที | คะแนน: <span id="speedScore">0</span></p><div id="speedBox"></div>`; if(z.id===3) return `<h3>🎮 เกมนักจัดไฟล์ - ลากก็ได้ กดก็ได้!</h3><p>กดที่ไฟล์ก่อน แล้วมากดที่โฟลเดอร์ที่ถูก หรือลากก็ได้</p><p>ไฟล์ที่เลือก: <span id="selFile">ยังไม่เลือก</span> | จัดถูกแล้ว: <span id="fileScore">0/6</span></p><div class="grid g3" id="fileGrid"></div><div class="grid g2" id="folderGrid" style="margin-top:12px"></div><button class="btn btn-primary" onclick="finishGame()">✅ จบเกม ไปทำใบงาน ➡️</button>`; if(z.id===4) return `<h3>🎮 เกมช่วย ROBO กลับบ้าน - เดินทางไหนก็ได้ ขอแค่ถึงบ้าน!</h3><p>กดเพิ่มคำสั่ง แล้วกด <b>เริ่มเดิน</b> เดินอ้อมทางไหนก็ได้ ขอแค่ถึงบ้านโดยไม่ชนกำแพง ถือว่าชนะ!</p><p>คำสั่งของหนู: <span id="cmds"></span></p><div style="text-align:center"><button class="btn btn-navy" onclick="addCmd('⬆️')">⬆️ เดินขึ้น</button> <button class="btn btn-navy" onclick="addCmd('⬇️')">⬇️ เดินลง</button> <button class="btn btn-navy" onclick="addCmd('⬅️')">⬅️ เดินซ้าย</button> <button class="btn btn-navy" onclick="addCmd('➡️')">➡️ เดินขวา</button> <button class="btn" onclick="clearCmds()">ลบทั้งหมด</button> <button class="btn btn-green" onclick="runRobo()">▶️ เริ่มเดิน</button></div><div class="grid5" id="roboGrid"></div><p id="roboMsg"></p><button class="btn btn-primary" onclick="finishGame()">✅ จบเกม ไปทำใบงาน ➡️</button>`; }
+let memOpen=[], memMatched=0, speedIdx=0, speedScore=0, speedTime=60, speedTimer=null, fileSel=null, fileDone=0, cmds=[];
+function initGame(z){ if(z.id===1){ let pairs=[['🖱️','รับข้อมูล'],['🧠','ประมวลผล'],['🖥️','แสดงผล'],['💾','เก็บข้อมูล'],['⌨️','รับข้อมูล'],['🖨️','แสดงผล']]; let cards=[]; pairs.forEach((p,i)=>{ cards.push({t:p[0],pair:i}); cards.push({t:p[1],pair:i}); }); cards.sort(()=>Math.random()-.5); memOpen=[]; memMatched=0; document.getElementById('memGrid').innerHTML=cards.map((c,i)=>`<button class="memory" onclick="flipMem(${i},this,'${c.t}',${c.pair})">?</button>`).join(''); } if(z.id===2){ speedIdx=0; speedScore=0; speedTime=60; clearInterval(speedTimer); speedTimer=setInterval(()=>{ speedTime--; let t=document.getElementById('timer'); if(t) t.textContent=speedTime; if(speedTime<=0){ clearInterval(speedTimer); alert('หมดเวลา! ได้ '+speedScore+' คะแนน'); finishGame(); } },1000); showSpeed(); } if(z.id===3){ let files=[['รายงาน.docx','งานพิมพ์'],['รูปแมว.jpg','รูปภาพ'],['เพลง.mp3','เพลง'],['วิดีโอ.mp4','วิดีโอ'],['รูปบ้าน.jpg','รูปภาพ'],['งานพิมพ์.docx','งานพิมพ์']]; fileSel=null; fileDone=0; document.getElementById('fileGrid').innerHTML=files.map((f,i)=>`<button class="filebtn" id="f${i}" onclick="selectFile(${i},'${f[0]}','${f[1]}')">${f[0]}</button>`).join(''); document.getElementById('folderGrid').innerHTML=['งานพิมพ์','รูปภาพ','เพลง','วิดีโอ'].map(f=>`<div class="folder" onclick="chooseFolder('${f}')">📁 ${f}</div>`).join(''); window._files=files; } if(z.id===4){ cmds=[]; drawRobo(0,0); updateCmds(); } }
+function flipMem(i,el,txt,pair){ if(el.classList.contains('matched')||el.classList.contains('open')) return; el.textContent=txt; el.classList.add('open'); playClick(); memOpen.push({el,pair}); if(memOpen.length===2){ let a=memOpen[0],b=memOpen[1]; if(a.pair===b.pair){ a.el.classList.add('matched'); b.el.classList.add('matched'); playCorrect(); confetti(); memMatched++; document.getElementById('memInfo').textContent=`จับคู่ถูก: ${memMatched}/6`; memOpen=[]; if(memMatched===6) alert('เก่งมาก! จับคู่ครบทุกคู่แล้ว!'); } else { playWrong(); setTimeout(()=>{ a.el.textContent='?'; b.el.textContent='?'; a.el.classList.remove('open'); b.el.classList.remove('open'); },700); memOpen=[]; } } }
 function showSpeed(){ let z=DATA[1]; if(speedIdx>=10){ clearInterval(speedTimer); alert('จบเกม! ได้ '+speedScore+' คะแนน'); finishGame(); return; } let q=z.pre[speedIdx]; document.getElementById('speedBox').innerHTML=`<div class="qcard"><b>ข้อ ${speedIdx+1}: ${q.q}</b>${q.o.map((o,i)=>`<div class="opt" onclick="answerSpeed(${i},${q.a},this)">${o}</div>`).join('')}</div>`; }
 function answerSpeed(i,ans,el){ if(i===ans){ playCorrect(); speedScore++; document.getElementById('speedScore').textContent=speedScore; el.classList.add('correct'); } else { playWrong(); el.classList.add('wrong'); } setTimeout(()=>{ speedIdx++; showSpeed(); },600); }
 function selectFile(i,name,cat){ fileSel={i,name,cat}; document.getElementById('selFile').textContent=name; document.querySelectorAll('.filebtn').forEach(b=>b.classList.remove('sel')); document.getElementById('f'+i).classList.add('sel'); playClick(); }
 function chooseFolder(folder){ if(!fileSel){ alert('กดเลือกไฟล์ก่อนนะ แล้วมากดโฟลเดอร์'); return; } if(fileSel.cat===folder){ playCorrect(); confetti(); document.getElementById('f'+fileSel.i).style.background='#dcfce7'; document.getElementById('f'+fileSel.i).textContent+=' ✅'; fileDone++; document.getElementById('fileScore').textContent=fileDone+'/6'; document.getElementById('selFile').textContent='เลือกไฟล์ต่อไป'; fileSel=null; if(fileDone===6) alert('เก่งมาก! จัดไฟล์ครบแล้ว!'); } else { playWrong(); alert('เกือบแล้ว! '+fileSel.name+' ควรอยู่โฟลเดอร์ '+fileSel.cat+' ลองอีกครั้งนะ'); } }
-function updateCmds(){ document.getElementById('cmds').textContent = cmds.join(' ')||'ยังไม่มีคำสั่ง'; }
+function updateCmds(){ document.getElementById('cmds').textContent=cmds.join(' ')||'ยังไม่มีคำสั่ง'; }
 function addCmd(c){ cmds.push(c); updateCmds(); playClick(); }
 function clearCmds(){ cmds=[]; updateCmds(); drawRobo(0,0); }
 function drawRobo(x,y){ let walls=[[1,1],[2,2],[3,1],[1,3]]; let html=''; for(let r=0;r<5;r++){ for(let col=0;col<5;col++){ let isWall=walls.some(w=>w[0]===col&&w[1]===r); let isRobo=(col===x&&r===y); let isHome=(col===4&&r===4); html+=`<div class="cell ${isWall?'wall':''} ${isHome?'home':''}">${isWall?'⬛':isRobo?'🤖':isHome?'🏠':''}</div>`; } } document.getElementById('roboGrid').innerHTML=html; }
 function runRobo(){ let x=0,y=0; let walls=[[1,1],[2,2],[3,1],[1,3]]; let step=0; if(cmds.length===0){ alert('เพิ่มคำสั่งก่อนนะ'); return; } let iv=setInterval(()=>{ if(step>=cmds.length){ clearInterval(iv); if(x===4&&y===4){ playUnlock(); confetti(); document.getElementById('roboMsg').innerHTML='<b style="color:#16a34a">🎉 ถึงบ้านแล้ว! เก่งมาก! เดินทางไหนก็ได้ขอแค่ถึงบ้านถือว่าถูก!</b>'; } else { playWrong(); document.getElementById('roboMsg').innerHTML='<b style="color:#dc2626">ยังไม่ถึงบ้าน ลองเพิ่มคำสั่งหรือเปลี่ยนเส้นทางดูนะ</b>'; } return; } let c=cmds[step]; if(c==='⬆️') y--; if(c==='⬇️') y++; if(c==='⬅️') x--; if(c==='➡️') x++; x=Math.max(0,Math.min(4,x)); y=Math.max(0,Math.min(4,y)); drawRobo(x,y); if(walls.some(w=>w[0]===x&&w[1]===y)){ clearInterval(iv); playWrong(); document.getElementById('roboMsg').innerHTML='<b style="color:#dc2626">ชนกำแพงแล้ว! ลองเส้นทางใหม่นะ</b>'; return; } step++; },500); }
 function finishGame(){ let p=state.progress[currentZone]||{}; p.gameDone=true; p.gameScore=10; state.progress[currentZone]=p; state.xp+=50; save(); playUnlock(); confetti(); alert('เล่นเกมจบแล้ว! รับ 50 XP ปลดล็อกใบงานแล้ว!'); currentStep='work'; renderZone(); }
-
-// TEACHER
 function openTeacher(){ document.getElementById('teacherModal').classList.add('open'); }
 function closeTeacher(){ document.getElementById('teacherModal').classList.remove('open'); }
 function checkTeacher(){ let v=document.getElementById('teacherPass').value; if(v===teacherPass){ closeTeacher(); document.getElementById('teacherDash').classList.add('open'); renderTeacher(); playUnlock(); } else { document.getElementById('teacherErr').textContent='รหัสไม่ถูกต้อง ลองอีกครั้งนะ'; playWrong(); } }
 function logoutTeacher(){ document.getElementById('teacherDash').classList.remove('open'); }
 function changePass(){ let np=document.getElementById('newPass').value.trim(); if(np.length<4){ alert('รหัสใหม่ต้องยาว 4 ตัวขึ้นไป'); return; } teacherPass=np; localStorage.setItem('roboTeacherPass',np); alert('เปลี่ยนรหัสครูแล้ว: '+np); }
-function renderTeacher(){ let q=(document.getElementById('searchName').value||'').toLowerCase(); let room=document.getElementById('filterRoom').value; let rows=state.allStudents.filter(s=>(!q||s.name.toLowerCase().includes(q))&&(!room||s.room===room)); // ใช้ข้อมูลปัจจุบัน + ประวัติใน progress (สำหรับไฟล์เดี่ยว จะแสดงนักเรียนคนปัจจุบันเป็นหลัก)
-  if(rows.length===0) rows=[state.student];
-  let html='<table><tr><th>เลขที่</th><th>ชื่อ</th><th>ห้อง</th><th>ก่อนเรียน โซน1</th><th>ก่อนเรียน โซน2</th><th>ก่อนเรียน โซน3</th><th>ก่อนเรียน โซน4</th><th>ใบงาน</th><th>XP</th><th>ดาว</th></tr>';
-  rows.forEach(s=>{ let p=state.progress; html+=`<tr><td>${s.num||'-'}</td><td>${s.name||'-'}</td><td>${s.room||'-'}</td><td>${p[1]?.preScore??'-'}/10</td><td>${p[2]?.preScore??'-'}/10</td><td>${p[3]?.preScore??'-'}/10</td><td>${p[4]?.preScore??'-'}/10</td><td>${[p[1]?.workScore,p[2]?.workScore,p[3]?.workScore,p[4]?.workScore].map(v=>v??'-').join(' , ')}</td><td>${state.xp}</td><td>${state.stars}</td></tr>`; });
-  html+='</table><p class="small">หมายเหตุ: ไฟล์นี้เก็บข้อมูลในเครื่องที่เปิดเว็บ (localStorage) ถ้าต้องการดูนักเรียนหลายเครื่องพร้อมกัน ให้ใช้เว็บเวอร์ชันออนไลน์ที่ครูแชร์ไว้</p>';
-  document.getElementById('teacherTable').innerHTML=html;
-}
-
-// INIT
+function renderTeacher(){ let q=(document.getElementById('searchName').value||'').toLowerCase(); let room=document.getElementById('filterRoom').value; let rows=state.allStudents.filter(s=>(!q||s.name.toLowerCase().includes(q))&&(!room||s.room===room)); if(rows.length===0) rows=[state.student]; let html='<table><tr><th>เลขที่</th><th>ชื่อ</th><th>ห้อง</th><th>ก่อนเรียน โซน1</th><th>ก่อนเรียน โซน2</th><th>ก่อนเรียน โซน3</th><th>ก่อนเรียน โซน4</th><th>ใบงาน</th><th>XP</th><th>ดาว</th></tr>'; rows.forEach(s=>{ let p=state.progress; html+=`<tr><td>${s.num||'-'}</td><td>${s.name||'-'}</td><td>${s.room||'-'}</td><td>${p[1]?.preScore??'-'}/10</td><td>${p[2]?.preScore??'-'}/10</td><td>${p[3]?.preScore??'-'}/10</td><td>${p[4]?.preScore??'-'}/10</td><td>${[p[1]?.workScore,p[2]?.workScore,p[3]?.workScore,p[4]?.workScore].map(v=>v??'-').join(' , ')}</td><td>${state.xp}</td><td>${state.stars}</td></tr>`; }); html+='</table><p class="small">ไฟล์นี้เก็บข้อมูลในเครื่องที่เปิดเว็บ (localStorage) ถ้าต้องการดูนักเรียนหลายเครื่องพร้อมกัน ให้ใช้เว็บเวอร์ชันออนไลน์ที่ครูแชร์ไว้</p>'; document.getElementById('teacherTable').innerHTML=html; }
 document.getElementById('num').value=state.student.num; document.getElementById('name').value=state.student.name; document.getElementById('room').value=state.student.room;
 renderChars(); renderZones(); updateHeader();
-// observer to show pretest after render
-const origRenderZone = renderZone;
-renderZone = function(){ origRenderZone(); if(currentStep==='pre'){ setTimeout(showPre,80); } };
 </script>
 </body>
 </html>
